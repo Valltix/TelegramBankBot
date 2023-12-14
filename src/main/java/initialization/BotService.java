@@ -6,7 +6,8 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class BotService {
     private BotInitializer telegramBot;
-    public BotService(){
+
+    public BotService() {
         telegramBot = new BotInitializer();
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);

@@ -1,6 +1,5 @@
 package initialization;
 
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -17,16 +16,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
     }
 
-//    @Override
-//    public void onUpdateReceived(Update update) {
-//        System.out.println("Update received");
-//        if (update.hasCallbackQuery()){
-//            String callBackQuery = update.getCallbackQuery().getData();
-//            System.out.println(callBackQuery);
-//        }
-//
-//    }
-
     @Override
     public String getBotUsername() {
         return BotConstants.BOT_NAME;
@@ -36,6 +25,4 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
     public String getBotToken() {
         return BotConstants.BOT_TOKEN;
     }
-
-
 }
