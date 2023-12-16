@@ -28,6 +28,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
             message.setChatId(chatId);
             photo.setChatId(chatId);
+            photo.setPhoto(inputFile);
 
             if (callBackQuery.equals("1")){
                 message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺\uFE0F ");
@@ -39,7 +40,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                         "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
                         "часів Київської Русі та походить від слова «гривна» — стародавньої нашийної прикраси, а також вагової, " +
                         "лічильної та монетної одиниці, що мала поширення на теренах сучасної України.");
-                photo.setPhoto(inputFile);
+
                 inputFile.setMedia(new File("src/main/java/initialization/image/UAH.jpeg"));
                 try {
                     execute(photo);
@@ -50,13 +51,13 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             if (callBackQuery.equals("3")){
                 message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
-                        "По-перше обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
-                        "По-друге - надати тобі: \n" +
+                        "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
+                        "По-друге, надати тобі: \n" +
                         " - поточний курс різних валют, які постійно оновлюються; \n" +
                         " - обрати курс певного банку; \n" +
                         " - обрати кількість знаків після коми, щоб керувати точністю; \n\n" +
-                        "Та ще дещо цікаве, можливість встановити сповіщення, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
-                photo.setPhoto(inputFile);
+                        "Та ще дещо цікаве, можливість встановити дату та час, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
+
                 inputFile.setMedia(new File("src/main/java/initialization/image/about.jpeg"));
                 try {
                     execute(photo);
