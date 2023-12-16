@@ -20,14 +20,14 @@ public class StartCommand extends BotCommand {
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
         String text =
-                "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний реальний курс головних валют до рідної гривні у світі!";
+                "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний курс головних валют у світі до рідної гривні!";
         SendMessage message = new SendMessage();
         message.setText(text);
         message.setChatId(chat.getId());
         message.setReplyMarkup(StartButtons.setButtons());
         SendPhoto photo = new SendPhoto();
         InputFile inputFile = new InputFile();
-        inputFile.setMedia(new File("src/main/java/initialization/image/photo.png"));
+        inputFile.setMedia(new File("src/main/java/initialization/image/hello.jpeg"));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
 
