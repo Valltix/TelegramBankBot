@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import telegram.initialization.commands.StartCommand;
+import telegram.menu.general.GeneralMenu;
 
 import java.io.File;
 
@@ -31,11 +32,11 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
 
-            if (callBackQuery.equals("1")){
+            if (callBackQuery.equals(String.valueOf(GeneralMenu.CURRENCY_RATE))){
                 message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺\uFE0F ");
             }
 
-            if (callBackQuery.equals("2")){
+            if (callBackQuery.equals(String.valueOf(GeneralMenu.ABOUT_UAH))){
                 message.setText("Сучасна гривня (символ — ₴, код — UAH) — офіційна валюта України. " +
                         "Сьогодні в обігу перебувають монети номіналом 10, 50 копійок, 1, 2, 5, 10 гривень і банкноти " +
                         "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
@@ -50,7 +51,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
             }
 
-            if (callBackQuery.equals("3")){
+            if (callBackQuery.equals(String.valueOf(GeneralMenu.BOT_ABILITIES))){
                 message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
                         "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
                         "По-друге, надати тобі: \n" +

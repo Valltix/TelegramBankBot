@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banks/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banks/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/Planner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/general/GeneralMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AppLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/BotConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/BotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/StartButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/general/StartButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/image/UAH.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/image/UAH.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/image/about.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/image/about.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/initialization/image/hello.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/image/hello.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/notification/NotificationButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
