@@ -28,7 +28,7 @@ public class StartCommand extends BotCommand {
         message.setReplyMarkup(StartButtons.setButtons());
         SendPhoto photo = new SendPhoto();
         InputFile inputFile = new InputFile();
-        inputFile.setMedia(new File("src/main/java/telegram.initialization/image/hello.jpeg"));
+        inputFile.setMedia(new File("src/main/java/telegram/initialization/image/hello.jpeg"));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
 
