@@ -1,6 +1,6 @@
-import initialization.BotService;
+import telegram.initialization.BotService;
 
-public class Test {
+public class AppLauncher {
     public static void main(String[] args) {
         BotService bot = new BotService();
     }

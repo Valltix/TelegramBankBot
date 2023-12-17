@@ -1,4 +1,4 @@
-package initialization;
+package telegram.initialization;
 
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import telegram.initialization.commands.StartCommand;
 
 import java.io.File;
 
@@ -41,7 +42,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                         "часів Київської Русі та походить від слова «гривна» — стародавньої нашийної прикраси, а також вагової, " +
                         "лічильної та монетної одиниці, що мала поширення на теренах сучасної України.");
 
-                inputFile.setMedia(new File("src/main/java/initialization/image/UAH.jpeg"));
+                inputFile.setMedia(new File("src/main/java/telegram.initialization/image/UAH.jpeg"));
                 try {
                     execute(photo);
                 } catch (TelegramApiException e) {
@@ -58,7 +59,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                         " - обрати кількість знаків після коми, щоб керувати точністю; \n\n" +
                         "Та ще дещо цікаве, можливість встановити дату та час, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
 
-                inputFile.setMedia(new File("src/main/java/initialization/image/about.jpeg"));
+                inputFile.setMedia(new File("src/main/java/telegram.initialization/image/about.jpeg"));
                 try {
                     execute(photo);
                 } catch (TelegramApiException e) {

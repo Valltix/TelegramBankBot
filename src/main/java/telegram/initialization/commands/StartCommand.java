@@ -1,5 +1,6 @@
-package initialization;
+package telegram.initialization.commands;
 
+import telegram.menu.general.StartButtons;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -27,7 +28,7 @@ public class StartCommand extends BotCommand {
         message.setReplyMarkup(StartButtons.setButtons());
         SendPhoto photo = new SendPhoto();
         InputFile inputFile = new InputFile();
-        inputFile.setMedia(new File("src/main/java/initialization/image/hello.jpeg"));
+        inputFile.setMedia(new File("src/main/java/telegram.initialization/image/hello.jpeg"));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
 

@@ -1,4 +1,4 @@
-package initialization;
+package telegram.initialization;
 
 public class BotConstants {
     public static final String BOT_NAME = "CurrencyGetRatesBot";
