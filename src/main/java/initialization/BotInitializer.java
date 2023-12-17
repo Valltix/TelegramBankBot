@@ -31,7 +31,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             photo.setPhoto(inputFile);
 
             if (callBackQuery.equals("1")){
-                message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺\uFE0F ");
+                message.setText("Технічні оновлення, вибачте за тимчасові незручності, дуже намагаємося все владнати якомога скоріше ☺\uFE0F ");
             }
 
             if (callBackQuery.equals("2")){
