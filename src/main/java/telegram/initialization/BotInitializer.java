@@ -9,26 +9,33 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import settings.SettingService;
+import telegram.initialization.commands.HelpCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
+
 import java.io.File;
+
+import static telegram.menu.general.DescriptionButtonsMessage.aboutUAH;
+import static telegram.menu.general.DescriptionButtonsMessage.botAbilities;
 
 public class BotInitializer extends TelegramLongPollingCommandBot {
 
     public BotInitializer() {
         register(new StartCommand());
+        register(new HelpCommand());
     }
+
+    private SendMessage message = new SendMessage();
+    private SendPhoto photo = new SendPhoto();
+    private InputFile inputFile = new InputFile();
 
     @Override
     public void processNonCommandUpdate(Update update) {
-        if (update.hasCallbackQuery()){
+
+        if (update.hasCallbackQuery()) {
 
             String callBackQuery = update.getCallbackQuery().getData();
-
-            SendMessage message = new SendMessage();
-            SendPhoto photo = new SendPhoto();
-            InputFile inputFile = new InputFile();
 
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
             message.setChatId(chatId);
@@ -44,13 +51,8 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case ABOUT_UAH -> {
-                    message.setText("Сучасна гривня (символ — ₴, код — UAH) — офіційна валюта України. " +
-                            "Сьогодні в обігу перебувають монети номіналом 10, 50 копійок, 1, 2, 5, 10 гривень і банкноти " +
-                            "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
-                            "часів Київської Русі та походить від слова «гривна» — стародавньої нашийної прикраси, а також вагової, " +
-                            "лічильної та монетної одиниці, що мала поширення на теренах сучасної України.");
-
-                    inputFile.setMedia(new File("src/main/java/telegram/initialization/image/UAH.jpeg"));
+                    message = aboutUAH();
+                    inputFile.setMedia(new File(BotConstants.UAH_PATH));
                     try {
                         execute(photo);
                     } catch (TelegramApiException e) {
@@ -59,15 +61,8 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case BOT_ABILITIES -> {
-                    message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
-                            "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
-                            "По-друге, надати тобі: \n" +
-                            " - поточний курс різних валют, які постійно оновлюються; \n" +
-                            " - обрати курс певного банку; \n" +
-                            " - обрати кількість знаків після коми, щоб керувати точністю; \n\n" +
-                            "Та ще дещо цікаве, можливість встановити дату та час, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
-
-                    inputFile.setMedia(new File("src/main/java/telegram/initialization/image/about.jpeg"));
+                    message = botAbilities();
+                    inputFile.setMedia(new File(BotConstants.ABOUT_PATH));
                     try {
                         execute(photo);
                     } catch (TelegramApiException e) {
@@ -92,45 +87,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             }
 
-            /*
-            if (callBackQuery.equals(GeneralMenu.CURRENCY_RATE.name())) {
-                message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
-                message.setReplyMarkup(DefaultButtons.setButtons());
-            }
-
-            if (callBackQuery.equals(String.valueOf(GeneralMenu.ABOUT_UAH))){
-                message.setText("Сучасна гривня (символ — ₴, код — UAH) — офіційна валюта України. " +
-                        "Сьогодні в обігу перебувають монети номіналом 10, 50 копійок, 1, 2, 5, 10 гривень і банкноти " +
-                        "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
-                        "часів Київської Русі та походить від слова «гривна» — стародавньої нашийної прикраси, а також вагової, " +
-                        "лічильної та монетної одиниці, що мала поширення на теренах сучасної України.");
-
-                inputFile.setMedia(new File("src/main/java/telegram/initialization/image/UAH.jpeg"));
-                try {
-                    execute(photo);
-                } catch (TelegramApiException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (callBackQuery.equals(String.valueOf(GeneralMenu.BOT_ABILITIES))){
-                message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
-                        "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
-                        "По-друге, надати тобі: \n" +
-                        " - поточний курс різних валют, які постійно оновлюються; \n" +
-                        " - обрати курс певного банку; \n" +
-                        " - обрати кількість знаків після коми, щоб керувати точністю; \n\n" +
-                        "Та ще дещо цікаве, можливість встановити дату та час, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
-
-                inputFile.setMedia(new File("src/main/java/telegram/initialization/image/about.jpeg"));
-                try {
-                    execute(photo);
-                } catch (TelegramApiException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-             */
-
             try {
                 execute(message);
             } catch (TelegramApiException e) {
@@ -140,6 +96,19 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             System.out.println("chatId = " + chatId);
         }
 
+        //Response for any random text from user
+        if (update.hasMessage()) {
+
+            String responseText = "На жаль, ви ввели невірну команду, будь-ласка, оберіть іншу \uD83D\uDE0A";
+            message.setText(responseText);
+            message.setChatId(update.getMessage().getChatId());
+
+            try {
+                execute(message);
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
