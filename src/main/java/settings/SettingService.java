@@ -1,5 +1,7 @@
 package settings;
 
+import utils.Utils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,9 +25,10 @@ public class SettingService {
         return currentSettings;
     }
 
-    public static UserSettings setDefaultSettings(long chatId) {
-        UserSettings set = new UserSettings(chatId);
-        settings.put(chatId, set);
+    private static UserSettings setDefaultSettings(long chatId) {
+        UserSettings set = Utils.readFromJsonFile("./src/main/java/settings/default_settings.json", UserSettings.class);
+        set.setChatId(chatId);
+        settings.put(chatId, set); // Saving into imagined database (Map)
         return set;
     }
 

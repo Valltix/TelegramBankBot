@@ -18,18 +18,6 @@ public class UserSettings {
 
     private LocalTime notification;
 
-    public UserSettings() {
-    }
-
-    // Default constructor for default settings
-    public UserSettings(Long chatId) {
-        this.chatId = chatId;
-        this.notification = LocalTime.of(9, 0, 0);
-        this.currencies = List.of(Currency.USD);
-        this.bankName = "Privat";
-        this.afterPoint = 2;
-    }
-
     public Long getChatId() {
         return chatId;
     }

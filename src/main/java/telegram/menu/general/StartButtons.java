@@ -2,6 +2,7 @@ package telegram.menu.general;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import telegram.menu.Menu;
 
 import java.util.*;
 
@@ -11,19 +12,19 @@ public class StartButtons {
         InlineKeyboardButton buttonStart = InlineKeyboardButton
                 .builder()
                 .text("Перейти до курсу валют \uD83D\uDCB8")
-                .callbackData(String.valueOf(GeneralMenu.CURRENCY_RATE))
+                .callbackData(Menu.CURRENCY_RATE.name())
                 .build();
 
         InlineKeyboardButton buttonUAH = InlineKeyboardButton
                 .builder()
                 .text("Про гривню \uD83C\uDDFA\uD83C\uDDE6")
-                .callbackData(String.valueOf(GeneralMenu.ABOUT_UAH))
+                .callbackData(Menu.ABOUT_UAH.name())
                 .build();
 
         InlineKeyboardButton buttonHelp = InlineKeyboardButton
                 .builder()
                 .text("Що ще може бот-знайка \uD83E\uDD13")
-                .callbackData(String.valueOf(GeneralMenu.BOT_ABILITIES))
+                .callbackData(Menu.BOT_ABILITIES.name())
                 .build();
 
         InlineKeyboardMarkup keyboard = InlineKeyboardMarkup
