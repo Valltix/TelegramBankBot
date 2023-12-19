@@ -1,7 +1,5 @@
 package banks;
 
 public interface BankService {
-    public double getRate(Currency currency);
-
-
+    public double getRate(CurrencyName currencyName, int scale);
 }
