@@ -8,13 +8,13 @@ import java.util.List;
 
 public class ExchangeRateService {
 
-    private static List<ExchangeRate> getExchangeRate(Currency ratedCurrency, UserSettings settings) {
+    private static List<ExchangeRate> getExchangeRate(CurrencyName ratedCurrency, UserSettings settings) {
         return settings.getCurrencies().stream()
                 .map(currency -> getRates(settings, ratedCurrency, currency))
                 .toList();
     }
 
-    private static ExchangeRate getRates(UserSettings settings, Currency ratedCurrency, Currency baseCurrency) {
+    private static ExchangeRate getRates(UserSettings settings, CurrencyName ratedCurrency, CurrencyName baseCurrency) {
 
         // TODO: connect to BankApi according to the settings.getBankName() and get current rate according to the currency.
         //  buy and sell prices should be returned as BigDecimal (e.g. Pair<BigDecimal, BigDecimal> can be used or object).
@@ -25,7 +25,7 @@ public class ExchangeRateService {
         return new ExchangeRate(baseCurrency, ratedCurrency, Utils.getScaledBigDecimal(buyRate, ap), Utils.getScaledBigDecimal(sellRate, ap));
     }
 
-    public static String getExchangeRateMessage(Currency currency, UserSettings settings) {
+    public static String getExchangeRateMessage(CurrencyName currency, UserSettings settings) {
 
         StringBuilder sb = new StringBuilder("Курс у *" + settings.getBankName() + "*: ");
         List<ExchangeRate> rates = getExchangeRate(currency, settings);

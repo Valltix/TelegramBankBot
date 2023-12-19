@@ -1,6 +1,6 @@
 package telegram.initialization;
 
-import banks.Currency;
+import banks.CurrencyName;
 import banks.ExchangeRateService;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -86,7 +86,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 // will be returned with selected after point parameter, in message text.
                 case GET_RATE -> {
                     var settings = SettingService.getCurrentSettings(chatId); // Setting object is used here to get User's current settings
-                    message.setText(ExchangeRateService.getExchangeRateMessage(Currency.UAH, settings));
+                    message.setText(ExchangeRateService.getExchangeRateMessage(CurrencyName.UAH, settings));
                     message.setReplyMarkup(DefaultButtons.setButtons());
                 }
 

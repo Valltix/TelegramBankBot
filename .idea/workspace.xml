@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Exchange rates development">
-      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/QueryDefiner.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/general/StartButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/general/StartButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
