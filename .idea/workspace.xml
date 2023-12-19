@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="" />
+    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/QueryDefiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultButtons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Scheduler/Planner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -50,15 +62,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "andriesko__branch",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/andri/IdeaProjects/TelegramBankBot/src/main/java/telegram/menu/settings"
+    "last_opened_file_path": "C:/Users/Илья/IdeaProjects/tb/TelegramBankBot/src/main/java"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Илья\IdeaProjects\tb\TelegramBankBot\src\main\java" />
       <recent name="C:\Users\andri\IdeaProjects\TelegramBankBot\src\main\java\telegram\menu\settings" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Илья\IdeaProjects\tb\TelegramBankBot\src\main\java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="telegram.menu.exchange" />
+      <recent name="banks" />
+      <recent name="settings" />
     </key>
   </component>
   <component name="RunManager">

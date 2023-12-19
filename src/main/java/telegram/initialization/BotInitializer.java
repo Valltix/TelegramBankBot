@@ -1,14 +1,18 @@
 package telegram.initialization;
 
+import banks.Currency;
+import banks.ExchangeRateService;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import settings.SettingService;
 import telegram.initialization.commands.StartCommand;
+import telegram.menu.exchange.DefaultButtons;
+import telegram.menu.exchange.DefaultMenu;
 import telegram.menu.general.GeneralMenu;
-
 import java.io.File;
 
 public class BotInitializer extends TelegramLongPollingCommandBot {
@@ -32,8 +36,11 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
 
-            if (callBackQuery.equals(String.valueOf(GeneralMenu.CURRENCY_RATE))){
-                message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺\uFE0F ");
+            message.setParseMode("markdown");
+
+            if (callBackQuery.equals(GeneralMenu.CURRENCY_RATE.name())) {
+                message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
+                message.setReplyMarkup(DefaultButtons.setButtons());
             }
 
             if (callBackQuery.equals(String.valueOf(GeneralMenu.ABOUT_UAH))){
@@ -67,6 +74,22 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     throw new RuntimeException(e);
                 }
             }
+
+            // added for further Settings buttons and logic implementation
+            if (DefaultMenu.SETTINGS.isQuery(callBackQuery)) { // this approach can be implemented for every ENUM
+                message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺️");
+                // TODO: implement settings button functionality
+            }
+
+            // Button request to get exchange rate according to the current set settings.
+            // The default keyboard (Отримати курс, Налаштування) will be displayed. Exchange rate for the bank selected and currencies,
+            // will be returned with selected after point parameter, in message text.
+            if (DefaultMenu.GET_RATE.isQuery(callBackQuery)) {
+                var settings = SettingService.getCurrentSettings(chatId); // Setting object is used here to get User's current settings
+                message.setText(ExchangeRateService.getExchangeRateMessage(Currency.UAH, settings));
+                message.setReplyMarkup(DefaultButtons.setButtons());
+            }
+
 
             try {
                 execute(message);
