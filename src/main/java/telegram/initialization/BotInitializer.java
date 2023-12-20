@@ -35,7 +35,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
 
-            message.setParseMode("markdown");
+            message.setParseMode("markdown"); // дає можливість стилізувати текст (жирний, курсив і т.д.).
 
             switch (Menu.valueOf(callBackQuery)) {
                 case CURRENCY_RATE -> {
@@ -91,45 +91,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
             }
-
-            /*
-            if (callBackQuery.equals(GeneralMenu.CURRENCY_RATE.name())) {
-                message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
-                message.setReplyMarkup(DefaultButtons.setButtons());
-            }
-
-            if (callBackQuery.equals(String.valueOf(GeneralMenu.ABOUT_UAH))){
-                message.setText("Сучасна гривня (символ — ₴, код — UAH) — офіційна валюта України. " +
-                        "Сьогодні в обігу перебувають монети номіналом 10, 50 копійок, 1, 2, 5, 10 гривень і банкноти " +
-                        "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
-                        "часів Київської Русі та походить від слова «гривна» — стародавньої нашийної прикраси, а також вагової, " +
-                        "лічильної та монетної одиниці, що мала поширення на теренах сучасної України.");
-
-                inputFile.setMedia(new File("src/main/java/telegram/initialization/image/UAH.jpeg"));
-                try {
-                    execute(photo);
-                } catch (TelegramApiException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (callBackQuery.equals(String.valueOf(GeneralMenu.BOT_ABILITIES))){
-                message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
-                        "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
-                        "По-друге, надати тобі: \n" +
-                        " - поточний курс різних валют, які постійно оновлюються; \n" +
-                        " - обрати курс певного банку; \n" +
-                        " - обрати кількість знаків після коми, щоб керувати точністю; \n\n" +
-                        "Та ще дещо цікаве, можливість встановити дату та час, в який я відправлю тобі поточний курс \uD83D\uDD70 -> ☺\uFE0F");
-
-                inputFile.setMedia(new File("src/main/java/telegram/initialization/image/about.jpeg"));
-                try {
-                    execute(photo);
-                } catch (TelegramApiException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-             */
 
             try {
                 execute(message);
