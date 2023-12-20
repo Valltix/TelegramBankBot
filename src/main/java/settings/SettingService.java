@@ -21,7 +21,7 @@ public class SettingService {
         UserSettings currentSettings;
 
         try {
-            currentSettings = Utils.readFromJsonFile(SETTINGS_PATH + chatId + "_settings.json", UserSettings.class);
+            currentSettings = Utils.readFromJsonFile(getSettingsPath(String.valueOf(chatId)), UserSettings.class);
         } catch (IOException e) {
             System.out.println("Default settings will be set for " + chatId);
             currentSettings = setDefaultSettings(chatId);
@@ -40,7 +40,7 @@ public class SettingService {
      * @return - created UserSettings object
      */
     private static UserSettings setDefaultSettings(long chatId) {
-        UserSettings set = Utils.readFromJsonFileChecked("./src/main/java/settings/default_settings.json", UserSettings.class);
+        UserSettings set = Utils.readFromJsonFileChecked(getSettingsPath("default"), UserSettings.class);
         set.setChatId(chatId);
         setSettings(chatId, set);
         return set;
@@ -49,6 +49,10 @@ public class SettingService {
     public static void setSettings(long chatId, UserSettings settings) {
         // TODO: get new Settings and save it in file json (update exiting or create new one), named like chatId + "_settings.json"
         //  Suggestion: create Utils method writeToJsonFile like readFromJsonFile"
+    }
+
+    private static String getSettingsPath(String chatId) {
+        return SETTINGS_PATH + chatId + "_settings.json";
     }
 
 

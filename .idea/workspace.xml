@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Exchange rates development">
-      <change afterPath="$PROJECT_DIR$/src/main/java/settings/1111111111_settings.json" afterDir="false" />
+    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files.">
       <change afterPath="$PROJECT_DIR$/src/main/java/settings/972780022_settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702947446569</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files.">
+      <created>1703069159944</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703069159944</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +151,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Exchange rates development" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exchange rates development" />
+    <MESSAGE value="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files." />
   </component>
 </project>
