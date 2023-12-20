@@ -8,13 +8,16 @@ import java.util.List;
 
 public class ExchangeRateService {
 
-    private static List<ExchangeRate> getExchangeRate(Currency ratedCurrency, UserSettings settings) {
+    // Бере з налаштувань список валют і для кожної з них викликає метод getRate, отримуючи об'єкт ExchangeRate.
+    // Зберігає ці об'єкти у список і повертає.
+    private static List<ExchangeRate> getExchangeRate(CurrencyName ratedCurrency, UserSettings settings) {
         return settings.getCurrencies().stream()
                 .map(currency -> getRates(settings, ratedCurrency, currency))
                 .toList();
     }
 
-    private static ExchangeRate getRates(UserSettings settings, Currency ratedCurrency, Currency baseCurrency) {
+    // Створює новий об'єкт ExchangeRate з данними отриманими з банку.
+    private static ExchangeRate getRates(UserSettings settings, CurrencyName ratedCurrency, CurrencyName baseCurrency) {
 
         // TODO: connect to BankApi according to the settings.getBankName() and get current rate according to the currency.
         //  buy and sell prices should be returned as BigDecimal (e.g. Pair<BigDecimal, BigDecimal> can be used or object).
@@ -25,9 +28,10 @@ public class ExchangeRateService {
         return new ExchangeRate(baseCurrency, ratedCurrency, Utils.getScaledBigDecimal(buyRate, ap), Utils.getScaledBigDecimal(sellRate, ap));
     }
 
-    public static String getExchangeRateMessage(Currency currency, UserSettings settings) {
+    // цей метод проходить по всім рейтам, що отримані методом getExchangeRate() і створює красиве повідомлення для чату.
+    public static String getExchangeRateMessage(CurrencyName currency, UserSettings settings) {
 
-        StringBuilder sb = new StringBuilder("Курс у *" + settings.getBankName() + "*: ");
+        StringBuilder sb = new StringBuilder("Курс у *" + settings.getBankName() + "*: \n\n");
         List<ExchangeRate> rates = getExchangeRate(currency, settings);
 
         for (var rate : rates) {
