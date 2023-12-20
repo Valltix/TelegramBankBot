@@ -1,7 +1,5 @@
 package telegram.initialization.commands;
 
-import telegram.initialization.BotConstants;
-import telegram.menu.general.StartButtons;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -10,34 +8,34 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import telegram.initialization.BotConstants;
 
 import java.io.File;
 
-public class StartCommand extends BotCommand {
+import static telegram.menu.general.DescriptionButtonsMessage.botAbilities;
 
-    public StartCommand() {
-        super("start", "Start command");
+public class HelpCommand extends BotCommand {
+
+    public HelpCommand() {
+        super("help", "bot functionality description");
     }
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
-        String text =
-                "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний курс головних валют у світі до рідної гривні!";
-        SendMessage message = new SendMessage();
-        message.setText(text);
-        message.setChatId(chat.getId());
-        message.setReplyMarkup(StartButtons.setButtons());
-        SendPhoto photo = new SendPhoto();
+        SendMessage helpMessage = new SendMessage();
         InputFile inputFile = new InputFile();
-        inputFile.setMedia(new File(BotConstants.HELLO_PATH));
+        SendPhoto photo = new SendPhoto();
+        helpMessage = botAbilities();
+        helpMessage.setChatId(chat.getId());
+        inputFile.setMedia(new File(BotConstants.ABOUT_PATH));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
-
         try {
             absSender.execute(photo);
-            absSender.execute(message);
+            absSender.execute(helpMessage);
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
