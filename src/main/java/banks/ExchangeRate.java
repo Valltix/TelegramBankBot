@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 
 public class ExchangeRate {
 
-    private Currency baseCurrency;
+    private CurrencyName baseCurrency;
 
-    private Currency ratedCurrency;
+    private CurrencyName ratedCurrency;
 
     private BigDecimal buy;
 
     private BigDecimal sell;
 
-    public ExchangeRate(Currency baseCurrency, Currency ratedCurrency, BigDecimal buy, BigDecimal sell) {
+    public ExchangeRate(CurrencyName baseCurrency, CurrencyName ratedCurrency, BigDecimal buy, BigDecimal sell) {
         this.baseCurrency = baseCurrency;
         this.ratedCurrency = ratedCurrency;
         this.buy = buy;
@@ -22,19 +22,19 @@ public class ExchangeRate {
     public ExchangeRate() {
     }
 
-    public Currency getBaseCurrency() {
+    public CurrencyName getBaseCurrency() {
         return baseCurrency;
     }
 
-    public void setBaseCurrency(Currency baseCurrency) {
+    public void setBaseCurrency(CurrencyName baseCurrency) {
         this.baseCurrency = baseCurrency;
     }
 
-    public Currency getRatedCurrency() {
+    public CurrencyName getRatedCurrency() {
         return ratedCurrency;
     }
 
-    public void setRatedCurrency(Currency ratedCurrency) {
+    public void setRatedCurrency(CurrencyName ratedCurrency) {
         this.ratedCurrency = ratedCurrency;
     }
 

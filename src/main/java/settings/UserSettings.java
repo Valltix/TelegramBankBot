@@ -1,8 +1,6 @@
 package settings;
 
-import banks.Currency;
-import org.telegram.telegrambots.meta.api.objects.User;
-
+import banks.CurrencyName;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class UserSettings {
 
     private Integer afterPoint;
 
-    private List<Currency> currencies;
+    private List<CurrencyName> currencies;
 
     private LocalTime notification;
 
@@ -42,11 +40,11 @@ public class UserSettings {
         this.afterPoint = afterPoint;
     }
 
-    public List<Currency> getCurrencies() {
+    public List<CurrencyName> getCurrencies() {
         return currencies;
     }
 
-    public void setCurrencies(List<Currency> currencies) {
+    public void setCurrencies(List<CurrencyName> currencies) {
         this.currencies = currencies;
     }
 
