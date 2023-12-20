@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Exchange rates development">
+    <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/settings/972780022_settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,19 +46,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;andriesko__branch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Илья/IdeaProjects/tb/TelegramBankBot/src/main/java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncher.executor": "Run",
+    "Application.Test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "andriesko__branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Илья/IdeaProjects/tb/TelegramBankBot/src/main/java/settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Илья\IdeaProjects\tb\TelegramBankBot\src\main\java\settings" />
       <recent name="C:\Users\Илья\IdeaProjects\tb\TelegramBankBot\src\main\java" />
       <recent name="C:\Users\andri\IdeaProjects\TelegramBankBot\src\main\java\telegram\menu\settings" />
     </key>
@@ -118,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702947446569</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files.">
+      <created>1703069159944</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703069159944</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +151,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Exchange rates development" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exchange rates development" />
+    <MESSAGE value="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files." />
   </component>
 </project>

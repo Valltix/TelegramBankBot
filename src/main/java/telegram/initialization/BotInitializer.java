@@ -42,7 +42,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
 
-            message.setParseMode("markdown");
+            message.setParseMode("markdown"); // дає можливість стилізувати текст (жирний, курсив і т.д.).
 
             switch (Menu.valueOf(callBackQuery)) {
                 case CURRENCY_RATE -> {
