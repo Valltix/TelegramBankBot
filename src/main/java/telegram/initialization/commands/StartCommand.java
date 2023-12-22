@@ -23,19 +23,25 @@ public class StartCommand extends BotCommand {
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
+
         String text =
                 "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний курс головних валют у світі до рідної гривні!";
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
         InputFile inputFile = new InputFile();
+        SendChatAction action = new SendChatAction();
+
         message.setText(text);
         message.setChatId(chat.getId());
         message.setReplyMarkup(StartButtons.setButtons());
         inputFile.setMedia(new File(BotConstants.HELLO_PATH));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
+        action.setChatId(chat.getId());
+        action.setAction(ActionType.TYPING);
 
         try {
+            absSender.execute(action);
             absSender.execute(photo);
             absSender.execute(message);
         } catch (TelegramApiException e) {

@@ -29,19 +29,23 @@ public class HelpCommand extends BotCommand {
         SendMessage helpMessage = new SendMessage();
         InputFile inputFile = new InputFile();
         SendPhoto photo = new SendPhoto();
+        SendChatAction action = new SendChatAction();
+
         botAbilities(helpMessage);
         helpMessage.setChatId(chat.getId());
         helpMessage.setReplyMarkup(StartButtons.setStart());
         inputFile.setMedia(new File(BotConstants.ABOUT_PATH));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
+        action.setChatId(chat.getId());
+        action.setAction(ActionType.TYPING);
 
         try {
+            absSender.execute(action);
             absSender.execute(photo);
             absSender.execute(helpMessage);
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

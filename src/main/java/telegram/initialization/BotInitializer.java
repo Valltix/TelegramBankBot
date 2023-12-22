@@ -116,6 +116,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             message.setText(responseText);
             message.setChatId(update.getMessage().getChatId());
             message.setReplyMarkup(StartButtons.setStart());
+            action.setChatId(update.getMessage().getChatId());
             action.setAction(ActionType.TYPING);
 
             try {
