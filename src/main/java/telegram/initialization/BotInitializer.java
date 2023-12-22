@@ -4,6 +4,11 @@ import banks.CurrencyName;
 import banks.ExchangeRateService;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.ActionType;
+
+
+import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
+
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -12,12 +17,15 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import settings.SettingService;
 import telegram.initialization.commands.HelpCommand;
+import telegram.initialization.commands.MainMenuCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
 import telegram.menu.general.StartButtons;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static telegram.menu.general.DescriptionButtonsMessage.aboutUAH;
 import static telegram.menu.general.DescriptionButtonsMessage.botAbilities;
@@ -27,12 +35,18 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
     public BotInitializer() {
         register(new StartCommand());
         register(new HelpCommand());
+        register(new MainMenuCommand());
+
+        setBotCommands();
+
     }
 
     private SendMessage message = new SendMessage();
     private SendPhoto photo = new SendPhoto();
     private InputFile inputFile = new InputFile();
     private SendChatAction action = new SendChatAction();
+
+
 
     @Override
     public void processNonCommandUpdate(Update update) {
@@ -128,6 +142,19 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
         }
     }
 
+    public void setBotCommands() {
+        List<BotCommand> commands = new ArrayList<>();
+        commands.add(new BotCommand("start", "Початок роботи"));
+        commands.add(new BotCommand("help", "Допомога"));
+        commands.add(new BotCommand("menu", "Головне меню"));
+        SetMyCommands setMyCommands = new SetMyCommands();
+        setMyCommands.setCommands(commands);
+        try {
+            this.execute(setMyCommands);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public String getBotUsername() {
         return BotConstants.BOT_NAME;
