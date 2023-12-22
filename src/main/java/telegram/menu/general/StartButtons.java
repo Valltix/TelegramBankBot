@@ -7,6 +7,22 @@ import telegram.menu.Menu;
 import java.util.*;
 
 public class StartButtons {
+
+    public static InlineKeyboardMarkup setStart() {
+
+        InlineKeyboardButton buttonSetStart = InlineKeyboardButton
+                .builder()
+                .text("Перейти до головного меню")
+                .callbackData(Menu.START.name())
+                .build();
+
+        InlineKeyboardMarkup keyboardStart = InlineKeyboardMarkup
+                .builder()
+                .keyboard(Collections.singletonList(Collections.singletonList(buttonSetStart)))
+                .build();
+
+        return keyboardStart;
+    }
     public static InlineKeyboardMarkup setButtons() {
 
         InlineKeyboardButton buttonStart = InlineKeyboardButton

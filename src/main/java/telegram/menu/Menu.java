@@ -3,6 +3,7 @@ package telegram.menu;
 public enum Menu {
 
     // General
+    START,
     CURRENCY_RATE,
     ABOUT_UAH,
     BOT_ABILITIES,

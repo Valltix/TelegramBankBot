@@ -6,7 +6,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 public class DescriptionButtonsMessage {
     private static SendMessage message = new SendMessage();
 
-    public static SendMessage aboutUAH() {
+    public static SendMessage aboutUAH(SendMessage message) {
         message.setText("Сучасна гривня (символ — ₴, код — UAH) — офіційна валюта України. " +
                 "Сьогодні в обігу перебувають монети номіналом 10, 50 копійок, 1, 2, 5, 10 гривень і банкноти " +
                 "номіналом 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 гривень. Історія української валюти сягає " +
@@ -15,7 +15,7 @@ public class DescriptionButtonsMessage {
         return message;
     }
 
-    public static SendMessage botAbilities() {
+    public static SendMessage botAbilities(SendMessage message) {
         message.setText("Зараз розповім, що я можу. \uD83E\uDD14 \n" +
                 "По-перше, обожнювати кожного, хто до мене завітав ❤\uFE0F \n" +
                 "По-друге, надати тобі: \n" +
