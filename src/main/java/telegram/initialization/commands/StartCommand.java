@@ -1,5 +1,7 @@
 package telegram.initialization.commands;
 
+import org.telegram.telegrambots.meta.api.methods.ActionType;
+import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import telegram.initialization.BotConstants;
 import telegram.menu.general.StartButtons;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
@@ -24,11 +26,11 @@ public class StartCommand extends BotCommand {
         String text =
                 "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний курс головних валют у світі до рідної гривні!";
         SendMessage message = new SendMessage();
+        SendPhoto photo = new SendPhoto();
+        InputFile inputFile = new InputFile();
         message.setText(text);
         message.setChatId(chat.getId());
         message.setReplyMarkup(StartButtons.setButtons());
-        SendPhoto photo = new SendPhoto();
-        InputFile inputFile = new InputFile();
         inputFile.setMedia(new File(BotConstants.HELLO_PATH));
         photo.setPhoto(inputFile);
         photo.setChatId(chat.getId());
