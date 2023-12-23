@@ -10,11 +10,25 @@ public enum Menu {
 
     // Default
     GET_RATE,
-    SETTINGS;
+    SETTINGS,
 
     // Notification
     // place notifications menu here
 
     // Settings
-    // place notifications menu here
+    BANK,
+    CURRENCY,
+    NOTIFICATION,
+    SIGNS_AFTER_COMA,
+
+
+    //Bank menu
+    BANK_NBU,
+    BANK_MONOBANK,
+    BANK_PRIVATBANK,
+
+    SIGNS_AFTER_COMA_1,
+    SIGNS_AFTER_COMA_2,
+    SIGNS_AFTER_COMA_3,
+    SIGNS_AFTER_COMA_4;
 }

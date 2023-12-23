@@ -5,10 +5,8 @@ import banks.ExchangeRateService;
 import notification.NotificationScheduler;
 import org.quartz.SchedulerException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
-import org.telegram.telegrambots.meta.api.methods.ActionType;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
-import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -20,12 +18,16 @@ import telegram.initialization.commands.MainMenuCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
+import telegram.menu.settings.BankButtons;
+import telegram.menu.settings.SettingsButtons;
+import telegram.menu.settings.SignAfterCommaButtons;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static telegram.menu.general.DescriptionButtonsMessage.aboutUAH;
-import static telegram.menu.general.DescriptionButtonsMessage.botAbilities;
+import static telegram.menu.general.DescriptionButtonsMessage.*;
+import static telegram.menu.settings.SettingsMessages.*;
 
 public class BotInitializer extends TelegramLongPollingCommandBot {
 
@@ -36,16 +38,16 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
         setBotCommands();
         try {
-            new NotificationScheduler().init();
+            NotificationScheduler.init();
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    private SendMessage message = new SendMessage();
-    private SendPhoto photo = new SendPhoto();
-    private InputFile inputFile = new InputFile();
+    private final SendMessage message = new SendMessage();
+    private final SendPhoto photo = new SendPhoto();
+    private final InputFile inputFile = new InputFile();
 
 
 
@@ -91,8 +93,33 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 // added for further Settings buttons and logic implementation
                 case SETTINGS -> {
-                    message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺️");
-                    // TODO: implement settings button functionality
+                    settingsMenu(message);
+                    message.setReplyMarkup(SettingsButtons.setButtons());
+                }
+
+                case BANK -> {
+                    bankMenu(message);
+                    message.setReplyMarkup(BankButtons.setButtons());
+
+                }
+                case BANK_NBU, BANK_PRIVATBANK, BANK_MONOBANK -> {
+                    BankButtons.handleBankButton(callBackQuery);
+                    selectedBank(message);
+                    message.setReplyMarkup(BankButtons.setButtons());
+                }
+
+                case SIGNS_AFTER_COMA ->{
+                    signAfrerComma(message);
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+                }
+
+                case  SIGNS_AFTER_COMA_1,
+                        SIGNS_AFTER_COMA_2,
+                        SIGNS_AFTER_COMA_3,
+                        SIGNS_AFTER_COMA_4 ->{
+                    SignAfterCommaButtons.handleSingButton(callBackQuery);
+                    selectedSignAfrerComma(message);
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
                 }
 
                 // Button request to get exchange rate according to the current set settings.
