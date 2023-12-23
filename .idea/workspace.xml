@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9dfd6731-9bc0-4ea9-9083-c6b9f89ce5f7" name="Changes" comment="Json development started, some code commented with java doc. Settings map replaced with dynamic json reader from files.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationSchedulerAnd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Scheduler/Planner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/1111111111_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/1111111111_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/NotificationScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationSchedulerAnd.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702736426942</updated>
-      <workItem from="1703327188764" duration="11334000" />
+      <workItem from="1703327188764" duration="12028000" />
     </task>
     <task id="LOCAL-00001" summary="Exchange rates development">
       <created>1702947446569</created>

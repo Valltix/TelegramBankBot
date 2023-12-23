@@ -13,7 +13,6 @@ public class NotificationScheduler {
 
     public static void main(String[] args) {
         String settingDirectory = "./src/main/java/settings/default_settings.json";
-
         Timer timer = new Timer();
         timer.schedule(new NotificationTask(settingDirectory), 0, 60 * 1000);
     }
@@ -25,9 +24,6 @@ public class NotificationScheduler {
 
         scheduler = schedulerFactory.getScheduler();
         scheduler.start();
-
-//        startDailyTask("5153293342", 19, 58);
-
         System.out.println("scheduler.isStarted() " + scheduler.isStarted());
         // Через 20 секунд зупиняємо завдання для chatId
 //        stopDailyTask("5153293342", 20);
@@ -44,9 +40,7 @@ public class NotificationScheduler {
 
     private static void startDailyTask(String chatId, int hour, int minute) throws SchedulerException {
         // Визначаємо час виконання завдання
-        System.out.println("Daily tast will be executed at " + hour + " " + minute);
-//        TimeZone timeZone = TimeZone.getTimeZone("Europe/Kiev");
-        TimeZone timeZone = TimeZone.getTimeZone("Europe/Warsaw");
+        System.out.println("Daily task will be executed at " + hour + " " + minute);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
