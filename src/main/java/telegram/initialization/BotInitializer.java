@@ -3,8 +3,6 @@ package telegram.initialization;
 import banks.CurrencyName;
 import banks.ExchangeRateService;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
-import org.telegram.telegrambots.meta.api.methods.ActionType;
-import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -15,7 +13,6 @@ import telegram.initialization.commands.HelpCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
-import telegram.menu.general.StartButtons;
 
 import java.io.File;
 
@@ -32,7 +29,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
     private SendMessage message = new SendMessage();
     private SendPhoto photo = new SendPhoto();
     private InputFile inputFile = new InputFile();
-    private SendChatAction action = new SendChatAction();
 
     @Override
     public void processNonCommandUpdate(Update update) {
@@ -45,16 +41,10 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             message.setChatId(chatId);
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
-            action.setChatId(chatId);
-            action.setAction(ActionType.TYPING); // дає можливість анімації, що бот друкує повідомлення
 
             message.setParseMode("markdown"); // дає можливість стилізувати текст (жирний, курсив і т.д.).
 
             switch (Menu.valueOf(callBackQuery)) {
-                case START -> {
-                    message.setText("Ви знаходитесь на головному меню! Оберіть, будь-ласка, дію ☺\uFE0F");
-                    message.setReplyMarkup(StartButtons.setButtons());
-                }
                 case CURRENCY_RATE -> {
                     message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
                     message.setReplyMarkup(DefaultButtons.setButtons());
@@ -63,7 +53,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 case ABOUT_UAH -> {
                     aboutUAH(message);
                     inputFile.setMedia(new File(BotConstants.UAH_PATH));
-                    message.setReplyMarkup(StartButtons.setStart());
                     try {
                         execute(photo);
                     } catch (TelegramApiException e) {
@@ -74,7 +63,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 case BOT_ABILITIES -> {
                     botAbilities(message);
                     inputFile.setMedia(new File(BotConstants.ABOUT_PATH));
-                    message.setReplyMarkup(StartButtons.setStart());
                     try {
                         execute(photo);
                     } catch (TelegramApiException e) {
@@ -100,7 +88,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             }
 
             try {
-                execute(action);
                 execute(message);
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
@@ -115,12 +102,8 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             String responseText = "На жаль, ви ввели невірну команду, будь-ласка, оберіть іншу \uD83D\uDE0A";
             message.setText(responseText);
             message.setChatId(update.getMessage().getChatId());
-            message.setReplyMarkup(StartButtons.setStart());
-            action.setChatId(update.getMessage().getChatId());
-            action.setAction(ActionType.TYPING);
 
             try {
-                execute(action);
                 execute(message);
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);

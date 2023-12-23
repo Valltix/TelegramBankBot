@@ -2,13 +2,22 @@ package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import settings.UserSettings;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Utils {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    static {
+        mapper.registerModule(new JavaTimeModule());
+    }
 
     // Метод "скорочування" знаків псля коми до scale
     public static BigDecimal getScaledBigDecimal(BigDecimal b, int scale) {
@@ -20,25 +29,31 @@ public class Utils {
         try {
             return readFromJsonFile(filePath, className);
         } catch (IOException ioException) {
-            System.err.println("Error reading from " + className + "and converting into class " + className.getSimpleName());
+            System.err.println("Error reading from " + className + " and converting into class " + className.getSimpleName());
             throw new RuntimeException(ioException.getMessage(), ioException);
         }
     }
 
     /**
      * Зчитує інформацію з файлу json і конвертує у об'єкт заданого классу.
-     * @param filePath - шлях до файлу
-     * @param className - клас, у який конвертувати
+     *
+     * @param filePath   - шлях до файлу
+     * @param className  - клас, у який конвертувати
+     * @param <T>        параметризований класом, у який треба конвертувати данні з json
      * @return створений об'єкт заданного класу
-     * @param <T> параметризований класом, у який треба конвертувати даннні з json
      * @throws IOException у разі помилки зчитування, буде викликана помилка
      */
-    public static <T> T readFromJsonFile(String filePath, Class<T> className) throws IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        var file = new File(filePath);
-        return mapper.readValue(file, className);
+    public static <T> T readFromJsonFile(String filePath, Class<T> className) throws IOException {
+        Path path = Paths.get(filePath);
+
+        if (!path.toFile().exists()) {
+            throw new IOException("File not found: " + filePath);
+        }
+
+        return mapper.readValue(path.toFile(), className);
     }
 
-
+    public static void writeToJsonFile(String filePath, Object data) throws IOException {
+        mapper.writeValue(new File(filePath), data);
+    }
 }
