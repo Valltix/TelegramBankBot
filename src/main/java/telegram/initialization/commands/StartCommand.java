@@ -1,5 +1,7 @@
 package telegram.initialization.commands;
 
+import notification.NotificationScheduler;
+import org.quartz.SchedulerException;
 import org.telegram.telegrambots.meta.api.methods.ActionType;
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import telegram.initialization.BotConstants;
@@ -41,11 +43,21 @@ public class StartCommand extends BotCommand {
         action.setAction(ActionType.TYPING);
 
         try {
+            NotificationScheduler.addNotification(String.valueOf(chat.getId()), 20, 7);
+        } catch (SchedulerException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             absSender.execute(action);
             absSender.execute(photo);
             absSender.execute(message);
+
+
+
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 }
