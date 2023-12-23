@@ -1,7 +1,0 @@
-{
-  "chatId" : "11111111111",
-  "notification" : "10:00:00",
-  "currencies" : [ "USD", "EUR" ],
-  "bankName" : "Mono",
-  "afterPoint" : 4
-}
