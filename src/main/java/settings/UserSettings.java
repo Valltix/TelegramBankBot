@@ -16,6 +16,8 @@ public class UserSettings {
 
     private LocalTime notification;
 
+    private Boolean notificationOn;
+
     public Long getChatId() {
         return chatId;
     }
@@ -51,11 +53,16 @@ public class UserSettings {
     public LocalTime getNotification() {
         return notification;
     }
-
     public void setNotification(LocalTime notification) {
         this.notification = notification;
     }
 
+    public Boolean getNotificationOn() {
+        return notificationOn;
+    }
+    public void setNotificationOn(Boolean notificationOn) {
+        this.notificationOn = notificationOn;
+    }
     @Override
     public String toString() {
         return "Банк: *" + bankName + "*\nЗнаків після коми: *" + afterPoint + "*\nВалюти: *" + String.join(", ", currencies.stream().map(Enum::name).toList()) + "*" + "\nОповіщення: *" + notification + "*";

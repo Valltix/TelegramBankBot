@@ -2,6 +2,8 @@ package telegram.initialization;
 
 import banks.CurrencyName;
 import banks.ExchangeRateService;
+import notification.NotificationScheduler;
+import org.quartz.SchedulerException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.ActionType;
 
@@ -38,6 +40,11 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
         register(new MainMenuCommand());
 
         setBotCommands();
+        try {
+            new NotificationScheduler().init();
+        } catch (SchedulerException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
