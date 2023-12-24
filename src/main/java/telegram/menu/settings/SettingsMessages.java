@@ -27,4 +27,20 @@ public class SettingsMessages {
         message.setText("Виберіть бажану точність ");
         return message;
     }
+    public static SendMessage currencyMenu(SendMessage message) {
+        message.setText("Виберіть валюти, курс яких Ви бажаєте отримувати");
+        return message;
+    }
+    public static SendMessage selectedCurrency(SendMessage message) {
+        message.setText("Вибрано валюти: ");
+        return message;
+    }
+    public static SendMessage notificationMenu(SendMessage message) {
+        message.setText("Виберіть, час коли Ви бажаєте отримувати сповіщення");
+        return message;
+    }
+    public static SendMessage selectedNotification(SendMessage message) {
+        message.setText("Вибрано наступний час коли для отримування сповіщення: ");
+        return message;
+    }
 }

@@ -54,6 +54,7 @@ private static final Set<Menu> selectedBanks = new HashSet<>();
         Menu bankMenu = Menu.valueOf(bankCallbackData);
         System.out.println("bankCallbackData = " + bankCallbackData);
         if (selectedBanks.contains(bankMenu)) {
+            if(selectedBanks.size() == 1) return;
             selectedBanks.remove(bankMenu);
         } else {
             selectedBanks.add(bankMenu);

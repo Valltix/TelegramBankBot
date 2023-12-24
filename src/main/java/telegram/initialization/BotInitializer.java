@@ -5,7 +5,9 @@ import banks.ExchangeRateService;
 import notification.NotificationScheduler;
 import org.quartz.SchedulerException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
+import org.telegram.telegrambots.meta.api.methods.ActionType;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
+import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -18,9 +20,8 @@ import telegram.initialization.commands.MainMenuCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
-import telegram.menu.settings.BankButtons;
-import telegram.menu.settings.SettingsButtons;
-import telegram.menu.settings.SignAfterCommaButtons;
+import telegram.menu.general.StartButtons;
+import telegram.menu.settings.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
     private final SendMessage message = new SendMessage();
     private final SendPhoto photo = new SendPhoto();
-    private final InputFile inputFile = new InputFile();
+    private InputFile inputFile = new InputFile();
 
 
 
@@ -66,6 +67,11 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             message.setParseMode("markdown"); // дає можливість стилізувати текст (жирний, курсив і т.д.).
 
             switch (Menu.valueOf(callBackQuery)) {
+                case START -> {
+                    message.setText("Ви знаходитесь на головному меню! Оберіть, будь-ласка, дію ☺️");
+                    message.setReplyMarkup(StartButtons.setButtons());
+                }
+
                 case CURRENCY_RATE -> {
                     message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
                     message.setReplyMarkup(DefaultButtons.setButtons());
@@ -121,6 +127,41 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     selectedSignAfrerComma(message);
                     message.setReplyMarkup(SignAfterCommaButtons.setButtons());
                 }
+                case CURRENCY ->{
+                    currencyMenu(message);
+                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                }
+
+                case    USD,
+                        EUR,
+                        PLN,
+                        GBP ->{
+                    CurrencyButtons.handleCurrencyButton(callBackQuery);
+                    selectedCurrency(message);
+                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                }
+                case NOTIFICATION ->{
+                    notificationMenu(message);
+                    message.setReplyMarkup(NotificationButtons.setButtons());
+                }
+
+                case    NOTIFICATION_DISABLE,
+                        NOTIFICATION_8,
+                        NOTIFICATION_9,
+                        NOTIFICATION_10,
+                        NOTIFICATION_11,
+                        NOTIFICATION_12,
+                        NOTIFICATION_13,
+                        NOTIFICATION_14,
+                        NOTIFICATION_15,
+                        NOTIFICATION_16,
+                        NOTIFICATION_17,
+                        NOTIFICATION_18,
+                        NOTIFICATION_19 ->{
+                    NotificationButtons.handleNotificationButton(callBackQuery);
+                    selectedNotification(message);
+                    message.setReplyMarkup(NotificationButtons.setButtons());
+                }
 
                 // Button request to get exchange rate according to the current set settings.
                 // The default keyboard (Отримати курс, Налаштування) will be displayed. Exchange rate for the bank selected and currencies,
@@ -135,6 +176,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             try {
                 execute(message);
+
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
@@ -151,6 +193,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             try {
                 execute(message);
+
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
