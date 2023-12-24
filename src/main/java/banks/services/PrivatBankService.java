@@ -1,4 +1,4 @@
-package banks.repositories;
+package banks.services;
 
 import banks.BankService;
 import banks.CurrencyName;
@@ -7,6 +7,8 @@ import banks.pb_data_classes.ExchangeRate;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -15,13 +17,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-public class PrivatBankRepository implements BankService {
+public class PrivatBankService implements BankService {
     private static final String URL = "https://api.privatbank.ua/p24api/exchange_rates?date=";
     private final HttpClient httpClient;
     private final Gson gson;
     private String date;
 
-    public PrivatBankRepository() {
+    public PrivatBankService() {
         this.httpClient = HttpClient.newHttpClient();
         this.gson = new Gson();
         LocalDateTime lcd = LocalDateTime.now();
@@ -47,13 +49,16 @@ public class PrivatBankRepository implements BankService {
         return null;
     }
     @Override
-    public double getRate(CurrencyName currencyName, int scale){
+    public BigDecimal getRate(CurrencyName currencyName, int scale){
         Optional<ExchangeRate> exchangeRate = Optional.ofNullable(getAllExchangeRate());
         if(exchangeRate.isPresent()){
             Optional<PBCurrency> cur = exchangeRate.get().getCurrencies().stream()
                     .filter(c -> c.getCurrency() == currencyName).findFirst();
-            return Math.round(cur.get().getSaleRate() * Math.pow(10, scale)) / Math.pow(10, scale);
+            if (cur.isPresent()) {
+                BigDecimal saleRate = new BigDecimal(cur.get().getSaleRate());
+                return saleRate.setScale(scale, RoundingMode.HALF_UP);
+            }
         }
-        return 0;
+        return BigDecimal.ZERO;
     }
 }

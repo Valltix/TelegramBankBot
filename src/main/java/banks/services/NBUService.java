@@ -1,14 +1,15 @@
-package banks.repositories;
+package banks.services;
 
 import banks.BankService;
 import banks.CurrencyName;
-import banks.monobank_data_classes.MBCurrency;
 import banks.nbu_data_classes.NBUCurrency;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,12 +17,12 @@ import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 
-public class NBURepository implements BankService {
+public class NBUService implements BankService {
     private static final String URL = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
     private final HttpClient httpClient;
     private final Gson gson;
 
-    public NBURepository() {
+    public NBUService() {
         this.httpClient = HttpClient.newHttpClient();
         this.gson = new Gson();
     }
@@ -44,12 +45,13 @@ public class NBURepository implements BankService {
     }
 
     @Override
-    public double getRate(CurrencyName currencyName, int scale) {
+    public BigDecimal getRate(CurrencyName currencyName, int scale) {
         List<NBUCurrency> currencies = getAllExchangeRate();
         Optional<NBUCurrency> cur = currencies.stream().filter(c -> c.getCc() == currencyName).findFirst();
         if(cur.isPresent()){
-            return Math.round(cur.get().getRate() * Math.pow(10, scale)) / Math.pow(10, scale);
+            BigDecimal saleRate = new BigDecimal(cur.get().getRate());
+            return saleRate.setScale(scale, RoundingMode.HALF_UP);
         }
-        return 0;
+        return BigDecimal.ZERO;
     }
 }

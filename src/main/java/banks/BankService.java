@@ -1,5 +1,7 @@
 package banks;
 
+import java.math.BigDecimal;
+
 public interface BankService {
-    public double getRate(CurrencyName currencyName, int scale);
+    public BigDecimal getRate(CurrencyName currencyName, int scale);
 }
