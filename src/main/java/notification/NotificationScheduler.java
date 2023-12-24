@@ -2,6 +2,8 @@ package notification;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import settings.SettingService;
+import settings.UserSettings;
 
 import java.io.File;
 import java.util.*;
@@ -10,12 +12,9 @@ import java.util.Calendar;
 public class NotificationScheduler {
 
     private static Scheduler scheduler;
+    private static final Map<String, JobDetail> jobDetailsMap = new HashMap<>();
+    private static final Map<String, Trigger> triggersMap = new HashMap<>();
 
-    public static void main(String[] args) {
-        String settingDirectory = "./src/main/java/settings/default_settings.json";
-        Timer timer = new Timer();
-        timer.schedule(new NotificationTask(settingDirectory), 0, 60 * 1000);
-    }
 
     public static void init() throws SchedulerException {
         System.out.println("Init scheduler");
@@ -24,23 +23,37 @@ public class NotificationScheduler {
 
         scheduler = schedulerFactory.getScheduler();
         scheduler.start();
+
+
+        Timer timer = new Timer();
+        timer.schedule(new DBNotificationInitiator(), 500);
+
+
         System.out.println("scheduler.isStarted() " + scheduler.isStarted());
-        // Через 20 секунд зупиняємо завдання для chatId
-//        stopDailyTask("5153293342", 20);
     }
 
-    public static void addNotification(String chatId, int hour, int minute) throws SchedulerException {
+    public static void addNotification(String chatId) throws SchedulerException {
+        UserSettings userSettings = SettingService.getCurrentSettings(Long.parseLong(chatId));
+
         if (scheduler == null){
             init();
         }
-        startDailyTask(chatId, hour, minute);
-
+            startDailyTask(chatId, userSettings.getNotification().getHour(), userSettings.getNotification().getMinute());
+    }
+    public static void deleteNotification(String chatId) throws SchedulerException {
+        if (scheduler == null){
+            init();
+        }
+        stopDailyTask(chatId);
     }
 
 
     private static void startDailyTask(String chatId, int hour, int minute) throws SchedulerException {
+        if (jobDetailsMap.containsKey(chatId) && triggersMap.containsKey(chatId)) {
+            deleteNotification(chatId);
+        }
         // Визначаємо час виконання завдання
-        System.out.println("Daily task will be executed at " + hour + " " + minute);
+        System.out.println("Daily task will be executed at " + hour + " " + minute + " for chat id " + chatId);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -55,53 +68,68 @@ public class NotificationScheduler {
                 .startAt(calendar.getTime())
                 .withSchedule(SimpleScheduleBuilder.repeatHourlyForever(24))
 //                .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(2))
-//                .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(19, 12).inTimeZone(timeZone))
                 .build();
 
+        jobDetailsMap.put(chatId, job);
+        triggersMap.put(chatId, trigger);
         scheduler.scheduleJob(job, trigger);
     }
 
-    private static void stopDailyTask(String chatId, int delayInSeconds) throws SchedulerException {
-        // Через delayInSeconds секунд відмінюємо завдання для користувача
-        scheduler.scheduleJob(JobBuilder.newJob().build(), TriggerBuilder.newTrigger()
-                .withIdentity(chatId + "-stop-trigger", "stop-triggers")
-                .startAt(new Date(System.currentTimeMillis() + delayInSeconds * 1000))
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(0))
-                .forJob(chatId, "daily-jobs")
-                .build());
+    private static void stopDailyTask(String chatId) throws SchedulerException {
+        JobDetail jobDetail = jobDetailsMap.get(chatId);
+        Trigger trigger = triggersMap.get(chatId);
+
+        if (jobDetail != null && trigger != null) {
+            scheduler.unscheduleJob(trigger.getKey());
+            scheduler.deleteJob(jobDetail.getKey());
+            jobDetailsMap.remove(chatId);
+            triggersMap.remove(chatId);
+            System.out.println("Job for chat id " + chatId + " has been unscheduled.");
+        } else {
+            System.out.println("No job found for chat id " + chatId);
+        }
     }
 
     private static Properties getSchedulerProperties() {
         Properties properties = new Properties();
         properties.put(StdSchedulerFactory.PROP_THREAD_POOL_CLASS, "org.quartz.simpl.SimpleThreadPool");
-        properties.put("org.quartz.threadPool.threadCount", "10"); // Визначаємо максимальну кількість потоків у пулі
-        properties.put("org.quartz.threadPool.threadPriority", "5"); // При необхідності, визначте пріоритет потоків
+        properties.put("org.quartz.threadPool.threadCount", "10");
+        properties.put("org.quartz.threadPool.threadPriority", "5");
         return properties;
     }
 
 }
- class NotificationTask extends TimerTask {
-    private String setingsDirectory;
-    public NotificationTask(String setingsDirectory) {
-        this.setingsDirectory = setingsDirectory;
-    }
-
-    @Override
+ class DBNotificationInitiator extends TimerTask {
+     @Override
      public void run() {
-        File directory = new File(setingsDirectory);
-        File[] userFiles = directory.listFiles();
+         String settingsDirectory = "./src/main/java/settings/";
+
+         File directory = new File(settingsDirectory);
+         File[] userFiles = directory.listFiles();
 
         if (userFiles != null) {
             for (File userFile : userFiles) {
                 if (userFile.isFile() && userFile.getName().endsWith(".json")) {
-                    String userId = userFile.getName().replace(".json", "");
-                    String userSettings = readUserSettings(userFile);
+                    String chatId = userFile.getName().replace("_settings.json", "");
+                    if(chatId.contains("default")){
+                        continue;
+                    }
+                    try {
+                        runScheduler(chatId);
+                    } catch (SchedulerException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }
     }
 
-    private String readUserSettings (File userFile) {
-        return null;
+    private void runScheduler(String chatId) throws SchedulerException {
+        try {
+            NotificationScheduler.addNotification(chatId);
+        } catch (SchedulerException e) {
+            System.out.println("Error adding notification for chat id " + chatId);
+            NotificationScheduler.deleteNotification(chatId);
+        }
     }
  }

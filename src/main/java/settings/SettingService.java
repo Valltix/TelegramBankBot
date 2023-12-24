@@ -54,7 +54,7 @@ public class SettingService {
         newUserSettings.setAfterPoint(2);
         newUserSettings.setCurrencies(List.of(CurrencyName.USD, CurrencyName.EUR));
         newUserSettings.setNotification(LocalTime.now());
-
+        System.out.println("Setting suttings ");
         // Save the settings
         setSettings(chatId, newUserSettings);
 

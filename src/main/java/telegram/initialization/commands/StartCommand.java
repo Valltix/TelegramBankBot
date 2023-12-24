@@ -41,19 +41,16 @@ public class StartCommand extends BotCommand {
         photo.setChatId(chat.getId());
         action.setChatId(chat.getId());
         action.setAction(ActionType.TYPING);
-
         try {
-            NotificationScheduler.addNotification(String.valueOf(chat.getId()), 20, 7);
+            NotificationScheduler.addNotification(String.valueOf(chat.getId()));
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
+
         try {
             absSender.execute(action);
             absSender.execute(photo);
             absSender.execute(message);
-
-
-
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
