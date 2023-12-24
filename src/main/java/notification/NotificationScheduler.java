@@ -53,8 +53,8 @@ public class NotificationScheduler {
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity(chatId + "-trigger", "daily-triggers")
                 .startAt(calendar.getTime())
-//                .withSchedule(SimpleScheduleBuilder.repeatHourlyForever(24))
-                .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(2))
+                .withSchedule(SimpleScheduleBuilder.repeatHourlyForever(24))
+//                .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(2))
 //                .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(19, 12).inTimeZone(timeZone))
                 .build();
 

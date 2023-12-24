@@ -7,8 +7,8 @@ import org.quartz.SchedulerException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.ActionType;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
-import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -20,12 +20,15 @@ import telegram.initialization.commands.MainMenuCommand;
 import telegram.initialization.commands.StartCommand;
 import telegram.menu.Menu;
 import telegram.menu.exchange.DefaultButtons;
+import telegram.menu.general.StartButtons;
+import telegram.menu.settings.*;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static telegram.menu.general.DescriptionButtonsMessage.aboutUAH;
-import static telegram.menu.general.DescriptionButtonsMessage.botAbilities;
+import static telegram.menu.general.DescriptionButtonsMessage.*;
+import static telegram.menu.settings.SettingsMessages.*;
 
 public class BotInitializer extends TelegramLongPollingCommandBot {
 
@@ -36,15 +39,15 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
         setBotCommands();
         try {
-            new NotificationScheduler().init();
+            NotificationScheduler.init();
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    private SendMessage message = new SendMessage();
-    private SendPhoto photo = new SendPhoto();
+    private final SendMessage message = new SendMessage();
+    private final SendPhoto photo = new SendPhoto();
     private InputFile inputFile = new InputFile();
 
 
@@ -64,6 +67,11 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             message.setParseMode("markdown"); // дає можливість стилізувати текст (жирний, курсив і т.д.).
 
             switch (Menu.valueOf(callBackQuery)) {
+                case START -> {
+                    message.setText("Ви знаходитесь на головному меню! Оберіть, будь-ласка, дію ☺️");
+                    message.setReplyMarkup(StartButtons.setButtons());
+                }
+
                 case CURRENCY_RATE -> {
                     message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
                     message.setReplyMarkup(DefaultButtons.setButtons());
@@ -91,8 +99,68 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 // added for further Settings buttons and logic implementation
                 case SETTINGS -> {
-                    message.setText("Технічні оновлення, вибачте за тимчасові незручності, намагаємося все владнати якомога скоріше ☺️");
-                    // TODO: implement settings button functionality
+                    settingsMenu(message);
+                    message.setReplyMarkup(SettingsButtons.setButtons());
+                }
+
+                case BANK -> {
+                    bankMenu(message);
+                    message.setReplyMarkup(BankButtons.setButtons());
+
+                }
+                case BANK_NBU, BANK_PRIVATBANK, BANK_MONOBANK -> {
+                    BankButtons.handleBankButton(callBackQuery);
+                    selectedBank(message);
+                    message.setReplyMarkup(BankButtons.setButtons());
+                }
+
+                case SIGNS_AFTER_COMA ->{
+                    signAfrerComma(message);
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+                }
+
+                case  SIGNS_AFTER_COMA_1,
+                        SIGNS_AFTER_COMA_2,
+                        SIGNS_AFTER_COMA_3,
+                        SIGNS_AFTER_COMA_4 ->{
+                    SignAfterCommaButtons.handleSingButton(callBackQuery);
+                    selectedSignAfrerComma(message);
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+                }
+                case CURRENCY ->{
+                    currencyMenu(message);
+                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                }
+
+                case    USD,
+                        EUR,
+                        PLN,
+                        GBP ->{
+                    CurrencyButtons.handleCurrencyButton(callBackQuery);
+                    selectedCurrency(message);
+                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                }
+                case NOTIFICATION ->{
+                    notificationMenu(message);
+                    message.setReplyMarkup(NotificationButtons.setButtons());
+                }
+
+                case    NOTIFICATION_DISABLE,
+                        NOTIFICATION_8,
+                        NOTIFICATION_9,
+                        NOTIFICATION_10,
+                        NOTIFICATION_11,
+                        NOTIFICATION_12,
+                        NOTIFICATION_13,
+                        NOTIFICATION_14,
+                        NOTIFICATION_15,
+                        NOTIFICATION_16,
+                        NOTIFICATION_17,
+                        NOTIFICATION_18,
+                        NOTIFICATION_19 ->{
+                    NotificationButtons.handleNotificationButton(callBackQuery);
+                    selectedNotification(message);
+                    message.setReplyMarkup(NotificationButtons.setButtons());
                 }
 
                 // Button request to get exchange rate according to the current set settings.
@@ -108,6 +176,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             try {
                 execute(message);
+
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
@@ -124,6 +193,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
             try {
                 execute(message);
+
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
