@@ -1,1 +1,6 @@
-{"chatId":5153293342,"bankName":"Privat","afterPoint":2,"currencies":["USD"],"notification":[9,0],"notificationOn":true}
+{"chatId":5153293342,
+  "bankName":"Privat",
+  "afterPoint":2,
+  "currencies":["PLN"],
+  "notification":[9,0],
+  "notificationOn":false}

@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e30255-0668-403e-bfbe-61547fce8b45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/notification/NotificationButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/notification/NotificationMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/SettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703410158469</updated>
-      <workItem from="1703410167641" duration="7491000" />
+      <workItem from="1703410167641" duration="14869000" />
     </task>
     <servers />
   </component>
