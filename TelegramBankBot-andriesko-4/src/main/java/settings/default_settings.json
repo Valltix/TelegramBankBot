@@ -1,0 +1,7 @@
+{
+  "notification" : "09:00:00",
+  "notificationOn" : "true",
+  "currencies" : [ "USD" ],
+  "bankName" : "Privat",
+  "afterPoint" : 2
+}
