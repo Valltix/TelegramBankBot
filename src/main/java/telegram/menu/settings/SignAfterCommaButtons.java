@@ -23,13 +23,13 @@ public class SignAfterCommaButtons {
 
         InlineKeyboardButton buttonPrevMenu = InlineKeyboardButton
                 .builder()
-                .text("Попереднє меню")
+                .text("Попереднє меню ↪\uFE0F")
                 .callbackData(Menu.SETTINGS.name())
                 .build();
 
         InlineKeyboardButton buttonMainMenu = InlineKeyboardButton
                 .builder()
-                .text("Головне меню")
+                .text("Головне меню \uD83C\uDFE0")
                 .callbackData(Menu.START.name())
                 .build();
 

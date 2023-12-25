@@ -202,9 +202,9 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
     public void setBotCommands() {
         List<BotCommand> commands = new ArrayList<>();
-        commands.add(new BotCommand("start", "Початок роботи"));
-        commands.add(new BotCommand("help", "Допомога"));
-        commands.add(new BotCommand("menu", "Головне меню"));
+        commands.add(new BotCommand("start", "Початок роботи \uD83D\uDE80"));
+        commands.add(new BotCommand("menu", "Головне меню \uD83C\uDFE0"));
+        commands.add(new BotCommand("help", "Допомога \uD83E\uDEF6"));
         SetMyCommands setMyCommands = new SetMyCommands();
         setMyCommands.setCommands(commands);
         try {

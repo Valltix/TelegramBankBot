@@ -17,19 +17,19 @@ private static final Set<Menu> selectedCurrency = new HashSet<>();
         List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
 
-        InlineKeyboardButton buttonUSD = createCurrencyButton(Menu.USD, "Долар СЩА");
-        InlineKeyboardButton buttonEUR = createCurrencyButton(Menu.EUR, "Євро");
-        InlineKeyboardButton buttonPLN = createCurrencyButton(Menu.PLN, "Злотий");
-        InlineKeyboardButton buttonGBP = createCurrencyButton(Menu.GBP, "Фунт стерлінгів");
+        InlineKeyboardButton buttonUSD = createCurrencyButton(Menu.USD, "Долар США ");
+        InlineKeyboardButton buttonEUR = createCurrencyButton(Menu.EUR, "Євро ");
+        InlineKeyboardButton buttonPLN = createCurrencyButton(Menu.PLN, "Злотий ");
+        InlineKeyboardButton buttonGBP = createCurrencyButton(Menu.GBP, "Фунт стерлінгів ");
 
         InlineKeyboardButton buttonPrevMenu = InlineKeyboardButton
                 .builder()
-                .text("Попереднє меню")
+                .text("Попереднє меню ↪\uFE0F")
                 .callbackData(Menu.SETTINGS.name())
                 .build();
         InlineKeyboardButton buttonMainMenu = InlineKeyboardButton
                 .builder()
-                .text("Головне меню")
+                .text("Головне меню \uD83C\uDFE0")
                 .callbackData(Menu.START.name())
                 .build();
 

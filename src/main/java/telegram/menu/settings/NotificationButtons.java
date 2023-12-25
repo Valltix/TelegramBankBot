@@ -40,12 +40,12 @@ public class NotificationButtons {
 
         InlineKeyboardButton buttonPrevMenu = InlineKeyboardButton
                 .builder()
-                .text("Попереднє меню")
+                .text("Попереднє меню ↪\uFE0F")
                 .callbackData(Menu.SETTINGS.name())
                 .build();
         InlineKeyboardButton buttonMainMenu = InlineKeyboardButton
                 .builder()
-                .text("Головне меню")
+                .text("Головне меню \uD83C\uDFE0")
                 .callbackData(Menu.START.name())
                 .build();
 
@@ -175,7 +175,7 @@ public class NotificationButtons {
             case NOTIFICATION_19:
                 // Включаем уведомления и устанавливаем время на 19 часов
                 userSettings.setNotificationOn(true);
-                userSettings.setNotification(LocalTime.of(20, 46, 0));
+                userSettings.setNotification(LocalTime.of(19, 0, 0));
                 updateNotificationSchedule(userSettings);
                 break;
             default:

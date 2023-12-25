@@ -6,25 +6,24 @@ public class SettingsMessages {
     private static final SendMessage message = new SendMessage();
 
     public static SendMessage settingsMenu(SendMessage message) {
-        message.setText("Виберіть яке налаштування Ви б хотіли змінити ☺️");
+        message.setText("Виберіть налаштування які хочете змінити ☺️");
         return message;
     }
 
     public static SendMessage bankMenu(SendMessage message) {
-        message.setText("Виберіть банк з якого Ви б хотіли отримувати курс валют ☺️");
+        message.setText("Виберіть банк з якого отримувати курс валют ☺️");
         return message;
     }
     public static SendMessage selectedBank(SendMessage message) {
-        message.setText("Вибрані банки: ");
-        //TODO: "Якщо не вибрано жодного банку то дати сповіщення або виконати іншу дію"
+        message.setText("Обраний банк: ");
         return message;
     }
     public static SendMessage selectedSignAfrerComma(SendMessage message) {
-        message.setText("Вибранo точність: ");
+        message.setText("Знаків після коми: ");
         return message;
     }
     public static SendMessage signAfrerComma(SendMessage message) {
-        message.setText("Виберіть бажану точність ");
+        message.setText("Оберіть кількість знаків після коми ");
         return message;
     }
     public static SendMessage currencyMenu(SendMessage message) {
