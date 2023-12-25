@@ -12,8 +12,7 @@ public enum Menu {
     GET_RATE,
     SETTINGS,
 
-    // Notification
-    // place notifications menu here
+    // Notification:
 
     // Settings
     BANK,

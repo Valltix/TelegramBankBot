@@ -29,6 +29,7 @@ public class Utils {
         try {
             return readFromJsonFile(filePath, className);
         } catch (IOException ioException) {
+            ioException.printStackTrace();
             System.err.println("Error reading from " + className + " and converting into class " + className.getSimpleName());
             throw new RuntimeException(ioException.getMessage(), ioException);
         }

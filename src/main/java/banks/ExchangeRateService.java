@@ -19,9 +19,6 @@ public class ExchangeRateService {
     // Створює новий об'єкт ExchangeRate з данними отриманими з банку.
     private static ExchangeRate getRates(UserSettings settings, CurrencyName ratedCurrency, CurrencyName baseCurrency) {
 
-        // TODO: connect to BankApi according to the settings.getBankName() and get current rate according to the currency.
-        //  buy and sell prices should be returned as BigDecimal (e.g. Pair<BigDecimal, BigDecimal> can be used or object).
-
         BigDecimal buyRate = new BigDecimal("37.364948736"); // example of received exchange rate from bank
         BigDecimal sellRate = new BigDecimal("37.574378679");
         var ap = settings.getAfterPoint();
@@ -31,15 +28,14 @@ public class ExchangeRateService {
     // цей метод проходить по всім рейтам, що отримані методом getExchangeRate() і створює красиве повідомлення для чату.
     public static String getExchangeRateMessage(CurrencyName currency, UserSettings settings) {
 
-        StringBuilder sb = new StringBuilder("Курс у *" + settings.getBankName() + "*: \n\n");
+        StringBuilder sb = new StringBuilder("Курс на сьогодні у *" + settings.getBankName() + "* : \n\n");
         List<ExchangeRate> rates = getExchangeRate(currency, settings);
 
         for (var rate : rates) {
             sb.append(rate.getBaseCurrency()).append(" / ").append(currency);
-            sb.append("\nПокупка: *").append(rate.getBuy()).append("*\nПродаж: *").append(rate.getSell()).append("*");
+            sb.append("\nКупівля: *").append(rate.getBuy()).append("* \nПродаж: *").append(rate.getSell()).append("*");
             sb.append("\n\n");
         }
-
         return sb.toString();
     }
 }

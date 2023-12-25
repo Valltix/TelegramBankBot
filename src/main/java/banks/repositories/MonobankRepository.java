@@ -1,4 +1,4 @@
-package banks.services;
+package banks.repositories;
 
 import banks.BankService;
 import banks.CurrencyName;
@@ -7,10 +7,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MonobankService implements BankService {
+public class MonobankRepository implements BankService {
     private static final String URL = "https://api.monobank.ua/bank/currency";
     private final HttpClient httpClient;
     private final Gson gson;
 
-    public MonobankService() {
+    public MonobankRepository() {
         this.httpClient = HttpClient.newHttpClient();
         this.gson = new Gson();
     }
@@ -65,13 +65,12 @@ public class MonobankService implements BankService {
     }
 
     @Override
-    public BigDecimal getRate(CurrencyName currencyName, int scale) {
+    public double getRate(CurrencyName currencyName, int scale) {
         List<MBCurrency> currencies = getAllExchangeRate();
         Optional<MBCurrency> cur = currencies.stream().filter(c -> c.getCurrencyCodeA() == currencyName.getIso4217Code()).findFirst();
         if(cur.isPresent()){
-            BigDecimal saleRate = new BigDecimal(cur.get().getRateBuy());
-            return new BigDecimal(cur.get().getRateBuy()).setScale(scale, RoundingMode.HALF_UP);
+            return Math.round(cur.get().getRateBuy() * Math.pow(10, scale)) / Math.pow(10, scale);
         }
-        return BigDecimal.ZERO;
+        return 0;
     }
 }

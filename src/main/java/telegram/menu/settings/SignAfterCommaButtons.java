@@ -2,6 +2,7 @@ package telegram.menu.settings;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import settings.UserSettings;
 import telegram.menu.Menu;
 
 import java.util.*;
@@ -60,12 +61,31 @@ public class SignAfterCommaButtons {
                 .build();
     }
 
-    public static void handleSingButton(String signCallbackData) {
+    public static void handleSingButton(String signCallbackData, UserSettings userSettings) {
         Menu signMenu = Menu.valueOf(signCallbackData);
-        if (selectedSignsAfterComma.contains(signMenu)) return;
-        else {
+        if (selectedSignsAfterComma.contains(signMenu)) {
+            return;
+        } else {
             selectedSignsAfterComma.clear();
             selectedSignsAfterComma.add(signMenu);
+
+            // Обновляем настройки пользователя
+            switch (signMenu) {
+                case SIGNS_AFTER_COMA_1:
+                    userSettings.setAfterPoint(1);
+                    break;
+                case SIGNS_AFTER_COMA_2:
+                    userSettings.setAfterPoint(2);
+                    break;
+                case SIGNS_AFTER_COMA_3:
+                    userSettings.setAfterPoint(3);
+                    break;
+                case SIGNS_AFTER_COMA_4:
+                    userSettings.setAfterPoint(4);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown sign button: " + signCallbackData);
+            }
         }
     }
 

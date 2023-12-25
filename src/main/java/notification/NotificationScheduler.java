@@ -15,7 +15,6 @@ public class NotificationScheduler {
     private static final Map<String, JobDetail> jobDetailsMap = new HashMap<>();
     private static final Map<String, Trigger> triggersMap = new HashMap<>();
 
-
     public static void init() throws SchedulerException {
         System.out.println("Init scheduler");
         StdSchedulerFactory schedulerFactory = new StdSchedulerFactory();
@@ -47,6 +46,10 @@ public class NotificationScheduler {
         stopDailyTask(chatId);
     }
 
+    public static void updateScheduledJob(String chatId, int hour, int minute) throws SchedulerException {
+        stopDailyTask(chatId);  // Остановите текущую задачу
+        startDailyTask(chatId, hour, minute);  // Запустите новую задачу с обновленными параметрами
+    }
 
     private static void startDailyTask(String chatId, int hour, int minute) throws SchedulerException {
         if (jobDetailsMap.containsKey(chatId) && triggersMap.containsKey(chatId)) {
@@ -67,7 +70,7 @@ public class NotificationScheduler {
                 .withIdentity(chatId + "-trigger", "daily-triggers")
                 .startAt(calendar.getTime())
                 .withSchedule(SimpleScheduleBuilder.repeatHourlyForever(24))
-//                .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(2))
+//              .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(2))
                 .build();
 
         jobDetailsMap.put(chatId, job);
@@ -99,37 +102,3 @@ public class NotificationScheduler {
     }
 
 }
- class DBNotificationInitiator extends TimerTask {
-     @Override
-     public void run() {
-         String settingsDirectory = "./src/main/java/settings/";
-
-         File directory = new File(settingsDirectory);
-         File[] userFiles = directory.listFiles();
-
-        if (userFiles != null) {
-            for (File userFile : userFiles) {
-                if (userFile.isFile() && userFile.getName().endsWith(".json")) {
-                    String chatId = userFile.getName().replace("_settings.json", "");
-                    if(chatId.contains("default")){
-                        continue;
-                    }
-                    try {
-                        runScheduler(chatId);
-                    } catch (SchedulerException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        }
-    }
-
-    private void runScheduler(String chatId) throws SchedulerException {
-        try {
-            NotificationScheduler.addNotification(chatId);
-        } catch (SchedulerException e) {
-            System.out.println("Error adding notification for chat id " + chatId);
-            NotificationScheduler.deleteNotification(chatId);
-        }
-    }
- }
