@@ -39,6 +39,7 @@ public class NotificationJob implements Job {
             telegramBot = BotService.getInstance();
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(chatId);
+            sendMessage.enableMarkdown(true);
             sendMessage.setText(ExchangeRateService.getExchangeRateMessage(CurrencyName.UAH, settings));
             telegramBot.execute(sendMessage);
         } catch (TelegramApiException e) {

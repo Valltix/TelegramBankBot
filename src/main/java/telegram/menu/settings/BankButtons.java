@@ -2,6 +2,7 @@ package telegram.menu.settings;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import settings.UserSettings;
 import telegram.menu.Menu;
 
 import java.util.*;
@@ -21,7 +22,7 @@ private static final Set<Menu> selectedBanks = new HashSet<>();
 
         InlineKeyboardButton buttonPrevMenu = InlineKeyboardButton
                 .builder()
-                .text("Попереднє меню")
+                .text("Попереднє меню ")
                 .callbackData(Menu.SETTINGS.name())
                 .build();
 
@@ -50,14 +51,19 @@ private static final Set<Menu> selectedBanks = new HashSet<>();
                 .build();
     }
 
-    public static void handleBankButton(String bankCallbackData) {
-        Menu bankMenu = Menu.valueOf(bankCallbackData);
-        System.out.println("bankCallbackData = " + bankCallbackData);
-        if (selectedBanks.contains(bankMenu)) {
-            if(selectedBanks.size() == 1) return;
-            selectedBanks.remove(bankMenu);
-        } else {
-            selectedBanks.add(bankMenu);
+    public static void handleBankButton(String buttonData, UserSettings userSettings) {
+        switch (buttonData) {
+            case "BANK_NBU":
+                userSettings.setBankName("NBU");
+                break;
+            case "BANK_PRIVATBANK":
+                userSettings.setBankName("Privat");
+                break;
+            case "BANK_MONOBANK":
+                userSettings.setBankName("Monobank");
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown bank button: " + buttonData);
         }
     }
 

@@ -23,7 +23,7 @@ public class MainMenuCommand extends BotCommand {
 
         SendMessage menuMessage = new SendMessage();
         SendChatAction action = new SendChatAction();
-        menuMessage.setText("Ви знаходитесь на головному меню! Оберіть, будь-ласка, дію ☺️");
+        menuMessage.setText("Ви знаходитесь у головному меню! Оберіть, будь-ласка, дію ☺️");
         menuMessage.setChatId(chat.getId());
         menuMessage.setReplyMarkup(StartButtons.setButtons());
         action.setChatId(chat.getId());

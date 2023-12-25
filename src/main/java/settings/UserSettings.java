@@ -1,6 +1,9 @@
 package settings;
 
 import banks.CurrencyName;
+import notification.NotificationScheduler;
+import org.quartz.SchedulerException;
+
 import java.time.LocalTime;
 import java.util.List;
 
@@ -57,6 +60,8 @@ public class UserSettings {
         this.notification = notification;
     }
 
+
+
     public Boolean getNotificationOn() {
         return notificationOn;
     }
@@ -65,7 +70,7 @@ public class UserSettings {
     }
     @Override
     public String toString() {
-        return "Банк: *" + bankName + "*\nЗнаків після коми: *" + afterPoint + "*\nВалюти: *" + String.join(", ", currencies.stream().map(Enum::name).toList()) + "*" + "\nОповіщення: *" + notification + "*";
+        return "Банк: *" + bankName + "*\nЗнаків після коми: *" + afterPoint + "*\nВалюта: *" + String.join(", ", currencies.stream().map(Enum::name).toList()) + "*" + "\nОповіщення: *" + notification + "*";
     }
 
 }

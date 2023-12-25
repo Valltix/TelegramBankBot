@@ -1,7 +1,9 @@
 package telegram.menu.settings;
 
+import banks.CurrencyName;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import settings.UserSettings;
 import telegram.menu.Menu;
 
 import java.util.*;
@@ -49,7 +51,7 @@ private static final Set<Menu> selectedCurrency = new HashSet<>();
     private static InlineKeyboardButton createCurrencyButton(Menu curencyMenu, String name) {
         String buttonText = name;
         if (selectedCurrency.contains(curencyMenu)) {
-            buttonText += " ✔";
+            buttonText += " ✅";
         }
 
         return InlineKeyboardButton
@@ -59,18 +61,27 @@ private static final Set<Menu> selectedCurrency = new HashSet<>();
                 .build();
     }
 
-    public static void handleCurrencyButton(String currencyCallbackData) {
+    public static void handleCurrencyButton(String currencyCallbackData, UserSettings userSettings) {
         Menu currencyMenu = Menu.valueOf(currencyCallbackData);
         System.out.println("currencyCallbackData = " + currencyCallbackData);
-        if (selectedCurrency.contains(currencyMenu)) {
-            if(selectedCurrency.size() == 1) return;
-            selectedCurrency.remove(currencyMenu);
-        } else {
-            selectedCurrency.add(currencyMenu);
-        }
-    }
 
-    public static Set<Menu> getSelectedCurrency() {
-        return Collections.unmodifiableSet(selectedCurrency);
+        switch (currencyMenu) {
+            case USD:
+            case EUR:
+            case PLN:
+            case GBP:
+                List<CurrencyName> selectedCurrencies = userSettings.getCurrencies();
+                if (selectedCurrencies.contains(CurrencyName.valueOf(currencyCallbackData))) {
+                    // Если валюта уже выбрана, удаляем ее
+                    selectedCurrencies.remove(CurrencyName.valueOf(currencyCallbackData));
+                } else {
+                    // Если валюта не выбрана, добавляем ее
+                    selectedCurrencies.clear();
+                    selectedCurrencies.add(CurrencyName.valueOf(currencyCallbackData));
+                }
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown currency button: " + currencyCallbackData);
+        }
     }
 }

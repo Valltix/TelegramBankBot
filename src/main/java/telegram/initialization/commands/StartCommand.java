@@ -26,8 +26,8 @@ public class StartCommand extends BotCommand {
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
 
-        String text =
-                "Привіт! Тебе вітає ботик-знайка курсу валют! Я знаю все про поточний курс головних валют у світі до рідної гривні!";
+        String text = "Привіт! Тебе вітає ботик-знайка курсу валют! " +
+                      "Я знаю все про поточний курс головних валют у світі до рідної гривні!";
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
         InputFile inputFile = new InputFile();

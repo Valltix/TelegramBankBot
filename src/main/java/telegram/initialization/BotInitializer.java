@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import settings.SettingService;
+import settings.UserSettings;
 import telegram.initialization.commands.HelpCommand;
 import telegram.initialization.commands.MainMenuCommand;
 import telegram.initialization.commands.StartCommand;
@@ -51,7 +52,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
     private InputFile inputFile = new InputFile();
 
 
-
     @Override
     public void processNonCommandUpdate(Update update) {
 
@@ -73,7 +73,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case CURRENCY_RATE -> {
-                    message.setText("Дякую ☺️\nОберіть нові _Налаштування_, або отримайте курс за поточними: \n\n" + SettingService.getCurrentSettings(chatId));
+                    message.setText("Отримайте курс за поточними налаштуваннями, або встановіть нові. \n\nПоточні: \n" + SettingService.getCurrentSettings(chatId));
                     message.setReplyMarkup(DefaultButtons.setButtons());
                 }
 
@@ -97,7 +97,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     }
                 }
 
-                // added for further Settings buttons and logic implementation
                 case SETTINGS -> {
                     settingsMenu(message);
                     message.setReplyMarkup(SettingsButtons.setButtons());
@@ -109,9 +108,12 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 }
                 case BANK_NBU, BANK_PRIVATBANK, BANK_MONOBANK -> {
-                    BankButtons.handleBankButton(callBackQuery);
+                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
+                    BankButtons.handleBankButton(callBackQuery, userSettings);
+                    SettingService.setSettings(chatId, userSettings);
                     selectedBank(message);
                     message.setReplyMarkup(BankButtons.setButtons());
+
                 }
 
                 case SIGNS_AFTER_COMA ->{
@@ -119,48 +121,46 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     message.setReplyMarkup(SignAfterCommaButtons.setButtons());
                 }
 
-                case  SIGNS_AFTER_COMA_1,
-                        SIGNS_AFTER_COMA_2,
-                        SIGNS_AFTER_COMA_3,
-                        SIGNS_AFTER_COMA_4 ->{
-                    SignAfterCommaButtons.handleSingButton(callBackQuery);
+                case SIGNS_AFTER_COMA_1, SIGNS_AFTER_COMA_2, SIGNS_AFTER_COMA_3, SIGNS_AFTER_COMA_4 -> {
+                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
+                    SignAfterCommaButtons.handleSingButton(callBackQuery, userSettings);
+                    SettingService.setSettings(chatId, userSettings);
                     selectedSignAfrerComma(message);
                     message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+
                 }
                 case CURRENCY ->{
                     currencyMenu(message);
                     message.setReplyMarkup(CurrencyButtons.setButtons());
                 }
 
-                case    USD,
-                        EUR,
-                        PLN,
-                        GBP ->{
-                    CurrencyButtons.handleCurrencyButton(callBackQuery);
+                case USD, EUR, PLN, GBP -> {
+                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
+                    CurrencyButtons.handleCurrencyButton(callBackQuery, userSettings);
+                    SettingService.setSettings(chatId, userSettings);
                     selectedCurrency(message);
                     message.setReplyMarkup(CurrencyButtons.setButtons());
+
                 }
                 case NOTIFICATION ->{
                     notificationMenu(message);
                     message.setReplyMarkup(NotificationButtons.setButtons());
                 }
 
-                case    NOTIFICATION_DISABLE,
-                        NOTIFICATION_8,
-                        NOTIFICATION_9,
-                        NOTIFICATION_10,
-                        NOTIFICATION_11,
-                        NOTIFICATION_12,
-                        NOTIFICATION_13,
-                        NOTIFICATION_14,
-                        NOTIFICATION_15,
-                        NOTIFICATION_16,
-                        NOTIFICATION_17,
-                        NOTIFICATION_18,
-                        NOTIFICATION_19 ->{
-                    NotificationButtons.handleNotificationButton(callBackQuery);
+                case NOTIFICATION_DISABLE, NOTIFICATION_8, NOTIFICATION_9, NOTIFICATION_10, NOTIFICATION_11, NOTIFICATION_12, NOTIFICATION_13, NOTIFICATION_14, NOTIFICATION_15, NOTIFICATION_16, NOTIFICATION_17, NOTIFICATION_18, NOTIFICATION_19 -> {
+                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
+                    NotificationButtons.handleNotificationButton(callBackQuery, userSettings);
+                    SettingService.setSettings(chatId, userSettings);
                     selectedNotification(message);
                     message.setReplyMarkup(NotificationButtons.setButtons());
+
+                   /* try {
+                        execute(message);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    */
                 }
 
                 // Button request to get exchange rate according to the current set settings.
