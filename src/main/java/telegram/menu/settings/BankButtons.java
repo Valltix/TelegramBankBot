@@ -6,17 +6,16 @@ import settings.UserSettings;
 import telegram.menu.Menu;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BankButtons {
 
 private static final Set<Menu> selectedBanks = new HashSet<>();
 
-    public static InlineKeyboardMarkup setButtons() {
+    public static InlineKeyboardMarkup setButtons(UserSettings userSettings) {
         List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
-
+        readUserBankSettings(userSettings);
         InlineKeyboardButton buttonNBU = createBankButton(Menu.BANK_NBU, "НБУ");
         InlineKeyboardButton buttonPrivatBank = createBankButton(Menu.BANK_PRIVATBANK, "ПриватБанк");
         InlineKeyboardButton buttonMonoBank = createBankButton(Menu.BANK_MONOBANK, "МоноБанк");
@@ -53,12 +52,31 @@ private static final Set<Menu> selectedBanks = new HashSet<>();
             buttonText += " ✅";
         }
 
+
         return InlineKeyboardButton
                 .builder()
                 .text(buttonText)
                 .callbackData(bankMenu.name())
                 .build();
     }
+
+    private static void readUserBankSettings(UserSettings userSettings){
+        switch (userSettings.getBankName()) {
+            case "NBU":
+                selectedBanks.add(Menu.BANK_NBU);
+                break;
+            case "Privat":
+                selectedBanks.add(Menu.BANK_PRIVATBANK);
+                break;
+            case "Monobank":
+                selectedBanks.add(Menu.BANK_MONOBANK);
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown bank button: " + userSettings.getBankName());
+        }
+    }
+
+
 
     public static void handleBankButton(String buttonData, UserSettings userSettings) {
         switch (buttonData) {

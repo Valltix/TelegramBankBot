@@ -5,116 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e30255-0668-403e-bfbe-61547fce8b45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/notification/DBNotificationInitiator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/AppLauncher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/BankService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/CurrencyName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/ExchangeRate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/ExchangeRateService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/monobank_data_classes/MBCurrency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/nbu_data_classes/NBUCurrency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/pb_data_classes/ExchangeRate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/pb_data_classes/PBCurrency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/repositories/MonobankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/MonobankRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/repositories/NBURepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/NBURepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/banks/repositories/PrivatBankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/PrivatBankRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/notification/NotificationJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/notification/NotificationScheduler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/1111111111_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/335716550_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/5153293342_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/5586709623_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/SettingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/UserSettings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/settings/default_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/BotConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/BotService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/commands/HelpCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/commands/MainMenuCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/commands/StartCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/image/UAH.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/image/about.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/initialization/image/hello.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/exchange/DefaultButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/general/DescriptionButtonsMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/general/StartButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/BankButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/CurrencyButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/NotificationButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/SettingsButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/SettingsMessages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/src/main/java/utils/Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/AppLauncher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/BankService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/CurrencyName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/ExchangeRate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/ExchangeRateService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/monobank_data_classes/MBCurrency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/nbu_data_classes/NBUCurrency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/pb_data_classes/ExchangeRate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/pb_data_classes/PBCurrency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/repositories/MonobankRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/repositories/NBURepository$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/repositories/NBURepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/banks/repositories/PrivatBankRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/notification/DBNotificationInitiator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/notification/NotificationJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/notification/NotificationScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/settings/SettingService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/settings/UserSettings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/BotConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/BotInitializer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/BotInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/BotService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/commands/HelpCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/commands/MainMenuCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/initialization/commands/StartCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/exchange/DefaultButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/general/DescriptionButtonsMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/general/StartButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/BankButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/CurrencyButtons$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/CurrencyButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/NotificationButtons$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/NotificationButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/SettingsButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/SettingsMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/SignAfterCommaButtons$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/telegram/menu/settings/SignAfterCommaButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TelegramBankBot-andriesko-4/target/classes/utils/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/services/MonobankService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/services/NBUService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/services/PrivatBankService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notification/NotificationScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/1111111111_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5586709623_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/default_settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/MainMenuCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/MainMenuCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/commands/StartCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/exchange/DefaultButtons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsButtons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,24 +43,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AppLauncher.executor": "Run",
-    "Application.NotificationScheduler.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "Vinatalika-patch-1",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/JAVA/IdeaProjects/TelegramBankBotTest",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NotificationScheduler.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/IdeaProjects/TelegramBankBotTest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\andri\IdeaProjects\TelegramBankBot\src\main\java\telegram\menu\bank" />

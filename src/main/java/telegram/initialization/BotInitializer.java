@@ -5,9 +5,7 @@ import banks.ExchangeRateService;
 import notification.NotificationScheduler;
 import org.quartz.SchedulerException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
-import org.telegram.telegrambots.meta.api.methods.ActionType;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
-import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -60,6 +58,8 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             String callBackQuery = update.getCallbackQuery().getData();
 
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
+            UserSettings userSettings = SettingService.getCurrentSettings(chatId);
+
             message.setChatId(chatId);
             photo.setChatId(chatId);
             photo.setPhoto(inputFile);
@@ -104,29 +104,27 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 case BANK -> {
                     bankMenu(message);
-                    message.setReplyMarkup(BankButtons.setButtons());
+                    message.setReplyMarkup(BankButtons.setButtons(userSettings));
 
                 }
                 case BANK_NBU, BANK_PRIVATBANK, BANK_MONOBANK -> {
-                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     BankButtons.handleBankButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedBank(message);
-                    message.setReplyMarkup(BankButtons.setButtons());
+                    message.setReplyMarkup(BankButtons.setButtons(userSettings));
 
                 }
 
                 case SIGNS_AFTER_COMA ->{
                     signAfrerComma(message);
-                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons(userSettings));
                 }
 
                 case SIGNS_AFTER_COMA_1, SIGNS_AFTER_COMA_2, SIGNS_AFTER_COMA_3, SIGNS_AFTER_COMA_4 -> {
-                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     SignAfterCommaButtons.handleSingButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedSignAfrerComma(message);
-                    message.setReplyMarkup(SignAfterCommaButtons.setButtons());
+                    message.setReplyMarkup(SignAfterCommaButtons.setButtons(userSettings));
 
                 }
                 case CURRENCY ->{
@@ -135,7 +133,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case USD, EUR, PLN, GBP -> {
-                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     CurrencyButtons.handleCurrencyButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedCurrency(message);
@@ -148,7 +145,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case NOTIFICATION_DISABLE, NOTIFICATION_8, NOTIFICATION_9, NOTIFICATION_10, NOTIFICATION_11, NOTIFICATION_12, NOTIFICATION_13, NOTIFICATION_14, NOTIFICATION_15, NOTIFICATION_16, NOTIFICATION_17, NOTIFICATION_18, NOTIFICATION_19 -> {
-                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     NotificationButtons.handleNotificationButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedNotification(message);

@@ -11,11 +11,11 @@ public class SignAfterCommaButtons {
 
     private static final Set<Menu> selectedSignsAfterComma = new HashSet<>();
 
-    public static InlineKeyboardMarkup setButtons() {
+    public static InlineKeyboardMarkup setButtons(UserSettings userSettings) {
         List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
-
+        readUserSignAfterCommaSettings(userSettings);
         InlineKeyboardButton buttonSign1 = createButton(Menu.SIGNS_AFTER_COMA_1, "1");
         InlineKeyboardButton buttonSign2 = createButton(Menu.SIGNS_AFTER_COMA_2, "2");
         InlineKeyboardButton buttonSign3 = createButton(Menu.SIGNS_AFTER_COMA_3, "3");
@@ -86,6 +86,25 @@ public class SignAfterCommaButtons {
                 default:
                     throw new IllegalArgumentException("Unknown sign button: " + signCallbackData);
             }
+        }
+    }
+
+    private static void readUserSignAfterCommaSettings(UserSettings userSettings){
+        switch (userSettings.getAfterPoint()) {
+            case 1:
+                selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_1);
+                break;
+            case 2:
+                selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_2);
+                break;
+            case 3:
+                selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_3);
+                break;
+            case 4:
+                selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_4);
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown bank button: " + userSettings.getAfterPoint());
         }
     }
 
