@@ -108,7 +108,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 }
                 case BANK_NBU, BANK_PRIVATBANK, BANK_MONOBANK -> {
-//                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     BankButtons.handleBankButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedBank(message);
@@ -122,7 +121,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case SIGNS_AFTER_COMA_1, SIGNS_AFTER_COMA_2, SIGNS_AFTER_COMA_3, SIGNS_AFTER_COMA_4 -> {
-//                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     SignAfterCommaButtons.handleSingButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedSignAfrerComma(message);
@@ -135,7 +133,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case USD, EUR, PLN, GBP -> {
-//                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     CurrencyButtons.handleCurrencyButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedCurrency(message);
@@ -148,7 +145,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
 
                 case NOTIFICATION_DISABLE, NOTIFICATION_8, NOTIFICATION_9, NOTIFICATION_10, NOTIFICATION_11, NOTIFICATION_12, NOTIFICATION_13, NOTIFICATION_14, NOTIFICATION_15, NOTIFICATION_16, NOTIFICATION_17, NOTIFICATION_18, NOTIFICATION_19 -> {
-//                    UserSettings userSettings = SettingService.getCurrentSettings(chatId);
                     NotificationButtons.handleNotificationButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedNotification(message);
