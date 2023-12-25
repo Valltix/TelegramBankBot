@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="27e30255-0668-403e-bfbe-61547fce8b45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/CurrencyName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/CurrencyName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/972780022_settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SettingsButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,24 +47,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.NotificationScheduler.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/IdeaProjects/TelegramBankBotTest&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncher.executor": "Run",
+    "Application.NotificationScheduler.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "andriesko",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/JAVA/IdeaProjects/TelegramBankBotTest",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\andri\IdeaProjects\TelegramBankBot\src\main\java\telegram\menu\bank" />

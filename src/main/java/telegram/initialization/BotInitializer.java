@@ -129,26 +129,26 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                 }
                 case CURRENCY ->{
                     currencyMenu(message);
-                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                    message.setReplyMarkup(CurrencyButtons.setButtons(userSettings));
                 }
 
                 case USD, EUR, PLN, GBP -> {
                     CurrencyButtons.handleCurrencyButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedCurrency(message);
-                    message.setReplyMarkup(CurrencyButtons.setButtons());
+                    message.setReplyMarkup(CurrencyButtons.setButtons(userSettings));
 
                 }
                 case NOTIFICATION ->{
                     notificationMenu(message);
-                    message.setReplyMarkup(NotificationButtons.setButtons());
+                    message.setReplyMarkup(NotificationButtons.setButtons(userSettings));
                 }
 
                 case NOTIFICATION_DISABLE, NOTIFICATION_8, NOTIFICATION_9, NOTIFICATION_10, NOTIFICATION_11, NOTIFICATION_12, NOTIFICATION_13, NOTIFICATION_14, NOTIFICATION_15, NOTIFICATION_16, NOTIFICATION_17, NOTIFICATION_18, NOTIFICATION_19 -> {
                     NotificationButtons.handleNotificationButton(callBackQuery, userSettings);
                     SettingService.setSettings(chatId, userSettings);
                     selectedNotification(message);
-                    message.setReplyMarkup(NotificationButtons.setButtons());
+                    message.setReplyMarkup(NotificationButtons.setButtons(userSettings));
 
                    /* try {
                         execute(message);

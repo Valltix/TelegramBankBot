@@ -4,7 +4,8 @@ public enum CurrencyName {
     UAH(980),
     EUR(978),
     USD(840),
-    PLN(985);
+    PLN(985),
+    GBP(826);
 
     private final int iso4217Code;
 

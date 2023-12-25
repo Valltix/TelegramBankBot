@@ -15,7 +15,7 @@ public class NotificationButtons {
     private static final Set<Menu> selectedNotification = new HashSet<>();
 
 
-    public static InlineKeyboardMarkup setButtons() {
+    public static InlineKeyboardMarkup setButtons(UserSettings userSettings) {
 
 
 
@@ -23,7 +23,7 @@ public class NotificationButtons {
         List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow4 = new ArrayList<>();
-
+        readUserNotificationSettings(userSettings);
         InlineKeyboardButton button8 = createNotificationButton(Menu.NOTIFICATION_8, "8");
         InlineKeyboardButton button9 = createNotificationButton(Menu.NOTIFICATION_9, "9");
         InlineKeyboardButton button10 = createNotificationButton(Menu.NOTIFICATION_10, "10");
@@ -183,7 +183,54 @@ public class NotificationButtons {
         }
 
     }
-
+    private static void readUserNotificationSettings(UserSettings userSettings){
+        selectedNotification.clear();
+        if (userSettings.getNotificationOn()){
+            selectedNotification.add(Menu.NOTIFICATION_DISABLE);
+        }
+        else {
+        switch (userSettings.getNotification().getHour()) {
+            case 8:
+                selectedNotification.add(Menu.NOTIFICATION_8);
+                break;
+            case 9:
+                selectedNotification.add(Menu.NOTIFICATION_9);
+                break;
+            case 10:
+                selectedNotification.add(Menu.NOTIFICATION_10);
+                break;
+            case 11:
+                selectedNotification.add(Menu.NOTIFICATION_11);
+                break;
+            case 12:
+                selectedNotification.add(Menu.NOTIFICATION_12);
+                break;
+            case 13:
+                selectedNotification.add(Menu.NOTIFICATION_13);
+                break;
+            case 14:
+                selectedNotification.add(Menu.NOTIFICATION_14);
+                break;
+            case 15:
+                selectedNotification.add(Menu.NOTIFICATION_15);
+                break;
+            case 16:
+                selectedNotification.add(Menu.NOTIFICATION_16);
+                break;
+            case 17:
+                selectedNotification.add(Menu.NOTIFICATION_17);
+                break;
+            case 18:
+                selectedNotification.add(Menu.NOTIFICATION_18);
+                break;
+            case 19:
+                selectedNotification.add(Menu.NOTIFICATION_19);
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown notification: " + userSettings.getNotification());
+        }
+        }
+    }
     private static void updateNotificationSchedule(UserSettings userSettings) {
         try {
             NotificationScheduler.updateScheduledJob(String.valueOf(userSettings.getChatId()), userSettings.getNotification().getHour(), userSettings.getNotification().getMinute());
