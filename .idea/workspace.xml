@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="27e30255-0668-403e-bfbe-61547fce8b45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banks/CurrencyName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/CurrencyName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/972780022_settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/initialization/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/BankButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/CurrencyButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/NotificationButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/telegram/menu/settings/SignAfterCommaButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/ExchangeRateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/monobank_data_classes/MBCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/monobank_data_classes/MBCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/pb_data_classes/PBCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/pb_data_classes/PBCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/repositories/MonobankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/MonobankRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/repositories/NBURepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/NBURepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banks/repositories/PrivatBankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banks/repositories/PrivatBankRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/5153293342_settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="andriesko_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,6 +89,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AppLauncher" />
         <item itemvalue="Application.AppLauncher" />
       </list>
     </recent_temporary>

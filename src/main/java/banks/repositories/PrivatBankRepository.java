@@ -47,13 +47,23 @@ public class PrivatBankRepository implements BankService {
         return null;
     }
     @Override
-    public double getRate(CurrencyName currencyName, int scale){
+    public double getBuyRate(CurrencyName currencyName, int scale){
+        Optional<ExchangeRate> exchangeBuyRate = Optional.ofNullable(getAllExchangeRate());
+        if(exchangeBuyRate.isPresent()){
+            Optional<PBCurrency> cur = exchangeBuyRate.get().getCurrencies().stream()
+                    .filter(c -> c.getCurrency() == currencyName).findFirst();
+            return Math.round(cur.get().getPurchaseRate() * Math.pow(10, scale)) / Math.pow(10, scale);
+        }
+        return 0;
+    }
+
+    @Override
+    public double getSellRate(CurrencyName currencyName, int scale) {
         Optional<ExchangeRate> exchangeRate = Optional.ofNullable(getAllExchangeRate());
         if(exchangeRate.isPresent()){
             Optional<PBCurrency> cur = exchangeRate.get().getCurrencies().stream()
                     .filter(c -> c.getCurrency() == currencyName).findFirst();
             return Math.round(cur.get().getSaleRate() * Math.pow(10, scale)) / Math.pow(10, scale);
         }
-        return 0;
-    }
+        return 0;    }
 }

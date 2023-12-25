@@ -10,10 +10,10 @@ public class PBCurrency {
     @SerializedName("currency")
     private CurrencyName currency;
 
-    @SerializedName("saleRateNB")
+    @SerializedName("saleRate")
     private double saleRate;
 
-    @SerializedName("purchaseRateNB")
+    @SerializedName("purchaseRate")
     private double purchaseRate;
 
     public String getBaseCurrency() {

@@ -13,6 +13,9 @@ public class MBCurrency {
     public double getRateBuy() {
         return rateBuy;
     }
+    public double getRateSell() {
+        return rateSell;
+    }
 
     public void setCurrencyCodeA(int currencyCodeA) {
         this.currencyCodeA = currencyCodeA;
@@ -28,6 +31,9 @@ public class MBCurrency {
 
     public void setRateBuy(double rateBuy) {
         this.rateBuy = rateBuy;
+    }
+    public void setRateSell(double rateSell) {
+        this.rateSell = rateSell;
     }
     @Override
     public String toString() {
