@@ -90,6 +90,7 @@ public class SignAfterCommaButtons {
     }
 
     private static void readUserSignAfterCommaSettings(UserSettings userSettings){
+        selectedSignsAfterComma.clear();
         switch (userSettings.getAfterPoint()) {
             case 1:
                 selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_1);
@@ -104,7 +105,7 @@ public class SignAfterCommaButtons {
                 selectedSignsAfterComma.add(Menu.SIGNS_AFTER_COMA_4);
                 break;
             default:
-                throw new IllegalArgumentException("Unknown bank button: " + userSettings.getAfterPoint());
+                throw new IllegalArgumentException("Unknown sign after comma: " + userSettings.getAfterPoint());
         }
     }
 

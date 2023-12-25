@@ -61,6 +61,7 @@ private static final Set<Menu> selectedBanks = new HashSet<>();
     }
 
     private static void readUserBankSettings(UserSettings userSettings){
+        selectedBanks.clear();
         switch (userSettings.getBankName()) {
             case "NBU":
                 selectedBanks.add(Menu.BANK_NBU);

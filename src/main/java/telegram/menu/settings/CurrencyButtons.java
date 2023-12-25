@@ -12,11 +12,11 @@ public class CurrencyButtons {
 
 private static final Set<Menu> selectedCurrency = new HashSet<>();
 
-    public static InlineKeyboardMarkup setButtons() {
+    public static InlineKeyboardMarkup setButtons(UserSettings userSettings) {
         List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
-
+        readUserCurrencySettings(userSettings);
         InlineKeyboardButton buttonUSD = createCurrencyButton(Menu.USD, "Долар США ");
         InlineKeyboardButton buttonEUR = createCurrencyButton(Menu.EUR, "Євро ");
         InlineKeyboardButton buttonPLN = createCurrencyButton(Menu.PLN, "Злотий ");
@@ -83,5 +83,28 @@ private static final Set<Menu> selectedCurrency = new HashSet<>();
             default:
                 throw new IllegalArgumentException("Unknown currency button: " + currencyCallbackData);
         }
+    }
+
+    private static void readUserCurrencySettings(UserSettings userSettings){
+        selectedCurrency.clear();
+        for(CurrencyName currencyName: userSettings.getCurrencies()){
+            switch (currencyName) {
+                case USD:
+                    selectedCurrency.add(Menu.USD);
+                    break;
+                case EUR:
+                    selectedCurrency.add(Menu.EUR);
+                    break;
+                case PLN:
+                    selectedCurrency.add(Menu.PLN);
+                    break;
+                case GBP:
+                    selectedCurrency.add(Menu.GBP);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown currency: " + currencyName);
+            }
+        }
+
     }
 }
