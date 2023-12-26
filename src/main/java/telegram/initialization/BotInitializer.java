@@ -4,6 +4,7 @@ import banks.CurrencyName;
 import banks.ExchangeRateService;
 import notification.NotificationScheduler;
 import org.quartz.SchedulerException;
+
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
@@ -23,13 +24,25 @@ import telegram.menu.general.StartButtons;
 import telegram.menu.settings.*;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import static telegram.menu.general.DescriptionButtonsMessage.*;
 import static telegram.menu.settings.SettingsMessages.*;
 
 public class BotInitializer extends TelegramLongPollingCommandBot {
+
+
+    private final SendMessage message = new SendMessage();
+    private final SendPhoto photo = new SendPhoto();
+    private InputFile inputFile = new InputFile();
+    private Properties property = new Properties();
+    private FileInputStream fis;
+
 
     public BotInitializer() {
         register(new StartCommand());
@@ -44,10 +57,6 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
         }
 
     }
-
-    private final SendMessage message = new SendMessage();
-    private final SendPhoto photo = new SendPhoto();
-    private InputFile inputFile = new InputFile();
 
 
     @Override
@@ -115,7 +124,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
 
                 }
 
-                case SIGNS_AFTER_COMA ->{
+                case SIGNS_AFTER_COMA -> {
                     signAfrerComma(message);
                     message.setReplyMarkup(SignAfterCommaButtons.setButtons(userSettings));
                 }
@@ -127,7 +136,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     message.setReplyMarkup(SignAfterCommaButtons.setButtons(userSettings));
 
                 }
-                case CURRENCY ->{
+                case CURRENCY -> {
                     currencyMenu(message);
                     message.setReplyMarkup(CurrencyButtons.setButtons(userSettings));
                 }
@@ -139,7 +148,7 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
                     message.setReplyMarkup(CurrencyButtons.setButtons(userSettings));
 
                 }
-                case NOTIFICATION ->{
+                case NOTIFICATION -> {
                     notificationMenu(message);
                     message.setReplyMarkup(NotificationButtons.setButtons(userSettings));
                 }
@@ -183,16 +192,20 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
         //Response for any random text from user
         if (update.hasMessage()) {
 
-            String responseText = "На жаль, ви ввели невірну команду, будь-ласка, оберіть іншу \uD83D\uDE0A";
-            message.setText(responseText);
-            message.setChatId(update.getMessage().getChatId());
+            hasMessage(update);
+        }
+    }
 
-            try {
-                execute(message);
+    public void hasMessage(Update update) {
+        String responseText = "На жаль, ви ввели невірну команду, будь-ласка, оберіть іншу \uD83D\uDE0A";
+        message.setText(responseText);
+        message.setChatId(update.getMessage().getChatId());
 
-            } catch (TelegramApiException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            execute(message);
+
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -209,13 +222,32 @@ public class BotInitializer extends TelegramLongPollingCommandBot {
             e.printStackTrace();
         }
     }
+
+    private void readProperty() {
+        {
+            try {
+                fis = new FileInputStream("src/main/java/telegram/initialization/config.properties");
+                property.load(fis);
+                fis.close();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+
     @Override
     public String getBotUsername() {
-        return BotConstants.BOT_NAME;
+        readProperty();
+        return property.getProperty("bot.name");
     }
 
     @Override
     public String getBotToken() {
-        return BotConstants.BOT_TOKEN;
+        readProperty();
+        return property.getProperty("bot.token");
     }
 }
