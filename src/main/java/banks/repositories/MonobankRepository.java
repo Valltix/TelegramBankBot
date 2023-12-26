@@ -51,6 +51,7 @@ public class MonobankRepository implements BankService {
                     currency.setCurrencyCodeB(jsonObject.get("currencyCodeB").getAsInt());
                     currency.setDate(jsonObject.get("date").getAsLong());
                     currency.setRateBuy(jsonObject.get("rateCross").getAsDouble());
+                    currency.setRateSell(jsonObject.get("rateCross").getAsDouble());
                     currencies.add(currency);
                 } else {
                     currencies.add(gson.fromJson(jsonObject, MBCurrency.class));
@@ -65,11 +66,21 @@ public class MonobankRepository implements BankService {
     }
 
     @Override
-    public double getRate(CurrencyName currencyName, int scale) {
+    public double getBuyRate(CurrencyName currencyName, int scale) {
         List<MBCurrency> currencies = getAllExchangeRate();
         Optional<MBCurrency> cur = currencies.stream().filter(c -> c.getCurrencyCodeA() == currencyName.getIso4217Code()).findFirst();
         if(cur.isPresent()){
             return Math.round(cur.get().getRateBuy() * Math.pow(10, scale)) / Math.pow(10, scale);
+        }
+        return 0;
+    }
+
+    @Override
+    public double getSellRate(CurrencyName currencyName, int scale) {
+        List<MBCurrency> currencies = getAllExchangeRate();
+        Optional<MBCurrency> cur = currencies.stream().filter(c -> c.getCurrencyCodeA() == currencyName.getIso4217Code()).findFirst();
+        if(cur.isPresent()){
+            return Math.round(cur.get().getRateSell() * Math.pow(10, scale)) / Math.pow(10, scale);
         }
         return 0;
     }

@@ -44,7 +44,7 @@ public class NBURepository implements BankService {
     }
 
     @Override
-    public double getRate(CurrencyName currencyName, int scale) {
+    public double getBuyRate(CurrencyName currencyName, int scale) {
         List<NBUCurrency> currencies = getAllExchangeRate();
         Optional<NBUCurrency> cur = currencies.stream().filter(c -> c.getCc() == currencyName).findFirst();
         if(cur.isPresent()){
@@ -52,4 +52,13 @@ public class NBURepository implements BankService {
         }
         return 0;
     }
+
+    @Override
+    public double getSellRate(CurrencyName currencyName, int scale) {
+        List<NBUCurrency> currencies = getAllExchangeRate();
+        Optional<NBUCurrency> cur = currencies.stream().filter(c -> c.getCc() == currencyName).findFirst();
+        if(cur.isPresent()){
+            return Math.round(cur.get().getRate() * Math.pow(10, scale)) / Math.pow(10, scale);
+        }
+        return 0;    }
 }

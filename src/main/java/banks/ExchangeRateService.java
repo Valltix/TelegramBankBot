@@ -1,6 +1,9 @@
 package banks;
 
 
+import banks.repositories.MonobankRepository;
+import banks.repositories.NBURepository;
+import banks.repositories.PrivatBankRepository;
 import settings.UserSettings;
 import utils.Utils;
 import java.math.BigDecimal;
@@ -18,9 +21,29 @@ public class ExchangeRateService {
 
     // Створює новий об'єкт ExchangeRate з данними отриманими з банку.
     private static ExchangeRate getRates(UserSettings settings, CurrencyName ratedCurrency, CurrencyName baseCurrency) {
+        BankService bankService;
+        BigDecimal buyRate;
+        BigDecimal sellRate;
+        switch (settings.getBankName()){
+            case "NBU":
+                bankService = new NBURepository();
+                break;
+            case "Privat":
+                bankService = new PrivatBankRepository();
+                break;
+            case "Monobank":
+                bankService = new MonobankRepository();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown bank: " + settings.getBankName());
+        }
 
-        BigDecimal buyRate = new BigDecimal("37.364948736"); // example of received exchange rate from bank
-        BigDecimal sellRate = new BigDecimal("37.574378679");
+        buyRate = new BigDecimal(bankService.getBuyRate(baseCurrency, settings.getAfterPoint()));
+        sellRate = new BigDecimal(bankService.getSellRate(baseCurrency, settings.getAfterPoint()));
+
+
+//        BigDecimal buyRate = new BigDecimal("37.364948736"); // example of received exchange rate from bank
+//        BigDecimal sellRate = new BigDecimal("37.574378679");
         var ap = settings.getAfterPoint();
         return new ExchangeRate(baseCurrency, ratedCurrency, Utils.getScaledBigDecimal(buyRate, ap), Utils.getScaledBigDecimal(sellRate, ap));
     }
